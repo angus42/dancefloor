@@ -12,6 +12,8 @@
 #define _VSARDUINO_H_
 #define __AVR_ATmega328p__
 #define __AVR_ATmega328P__
+#define _DEBUG 1
+#define _VMDEBUG 1
 #define ARDUINO 106
 #define ARDUINO_MAIN
 #define __AVR__
@@ -42,12 +44,14 @@ extern "C" void __cxa_pure_virtual() {;}
 //
 //
 void soundTrigger();
-void colorWipe(uint32_t c);
-uint32_t Color(byte r, byte g, byte b);
 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\arduino.h"
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard\pins_arduino.h" 
 #include "C:\Users\angus\Source\Repos\dancefloor\DanceFloor.ino"
 #include "C:\Users\angus\Source\Repos\dancefloor\Adafruit_WS2801.cpp"
 #include "C:\Users\angus\Source\Repos\dancefloor\Adafruit_WS2801.h"
+#include "C:\Users\angus\Source\Repos\dancefloor\Config.h"
+#include "C:\Users\angus\Source\Repos\dancefloor\FourColor.h"
+#include "C:\Users\angus\Source\Repos\dancefloor\SequencePlayer.cpp"
+#include "C:\Users\angus\Source\Repos\dancefloor\SequencePlayer.h"
 #endif
