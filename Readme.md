@@ -27,3 +27,8 @@ LED (Blue) and button for future extension...
 Instead of storing full RGB values store indices into a palette for each sequence.
 Then we do not need _Export to C_ in the Sequencer but a special tool that parses
 the JSON file and generates a header file with a palette and sequence C array from it.
+
+## Used third party software
+
+[Adafruit WS2801 Library on GitHub](https://github.com/adafruit/Adafruit-WS2801-Library)
+
