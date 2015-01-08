@@ -24,5 +24,8 @@
     <ClInclude Include="Visual Micro\.dancefloor.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FourColor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

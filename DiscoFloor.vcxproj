@@ -78,6 +78,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FourColor.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
     <ClInclude Include="Visual Micro\.dancefloor.vsarduino.h" />
     <ClInclude Include="Visual Micro\.DiscoFloor.vsarduino.h" />
   </ItemGroup>
@@ -86,7 +89,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties arduino.upload.port="COM9" />
+      <UserProperties arduino.upload.port="COM10" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
