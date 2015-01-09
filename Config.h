@@ -21,6 +21,7 @@ const uint8_t ledMatrixClockPin = 5;
 
 typedef byte frame_t[matrixWidth * matrixHeight][3];
 typedef frame_t sequence4_t[4];
+typedef frame_t sequence_t[];
 
 #endif
 
