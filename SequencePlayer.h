@@ -14,7 +14,7 @@
 class SequencePlayer
 {
  public:
-	 SequencePlayer(Adafruit_WS2801* m, sequence4_t* s, uint8_t fc);
+	 SequencePlayer(Adafruit_WS2801* m, byte* s, uint8_t fc);
 
 	 void nextFrame();
 	 void showFrame();
@@ -24,7 +24,7 @@ class SequencePlayer
 
  private:
 	 Adafruit_WS2801* matrix;
-	 sequence4_t* sequence;
+	 byte* sequence;
 	 uint8_t frameCount;
 	 uint8_t currentFrame;
 };

@@ -7,9 +7,10 @@
 volatile int intCount = 0;
 volatile bool ledOn = LOW;
 unsigned long lastIntMillis;
+unsigned int lastIntCount;
 
 Adafruit_WS2801 matrix(matrixWidth, matrixHeight, ledMatrixDataPin, ledMatrixClockPin, WS2801_RGB);
-SequencePlayer player(&matrix, &FourColor, 4);
+SequencePlayer player(&matrix, (byte*) &FourColor, 4);
 
 void setup() {
 	pinMode(ledPin, OUTPUT);
@@ -23,8 +24,11 @@ void loop() {
 	Serial.println(intCount);
 
 	player.showFrame();
-	delay(100);
-	player.nextFrame();
+	delay(50);
+	if (lastIntCount != intCount) {
+		player.nextFrame();
+		lastIntCount = intCount;
+	}
 }
 
 void soundTrigger()

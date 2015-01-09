@@ -1,6 +1,6 @@
 #include "SequencePlayer.h"
 
-SequencePlayer::SequencePlayer(Adafruit_WS2801* m, sequence4_t* s, uint8_t fc) {
+SequencePlayer::SequencePlayer(Adafruit_WS2801* m, byte* s, uint8_t fc) {
 	matrix = m;
 	sequence = s;
 	frameCount = fc;
@@ -19,14 +19,15 @@ void SequencePlayer::showFrame() {
 #endif
 
 	int i;
+	int fs = sizeof(frame_t);
 	for (i = 0; i < matrix->numPixels(); i++) {
 		uint32_t c = color(
-			(*sequence)[currentFrame][i][0],
-			(*sequence)[currentFrame][i][1],
-			(*sequence)[currentFrame][i][2]);
+			*(sequence + currentFrame * fs + i * 3 + 0),
+			*(sequence + currentFrame * fs + i * 3 + 1),
+			*(sequence + currentFrame * fs + i * 3 + 2));
 		matrix->setPixelColor(i, c);
-		// Serial.print("#");
-		// Serial.print(c);
+		Serial.print("#");
+		Serial.print(c);
 	}
 	matrix->show();
 
