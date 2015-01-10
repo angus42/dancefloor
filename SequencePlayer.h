@@ -8,25 +8,21 @@
 #else
 	#include "WProgram.h"
 #endif
+
 #include "Config.h"
-#include "Adafruit_WS2801.h"
 
 class SequencePlayer
 {
  public:
-	 SequencePlayer(Adafruit_WS2801* m, byte* s, uint8_t fc);
+	 SequencePlayer();
 
-	 void nextFrame();
-	 void showFrame();
-
- protected:
-	 uint32_t color(byte r, byte g, byte b);
+	 void configure(void* d);
+	 void moveNextFrame();
+	 byte* getCurrentFrame();
 
  private:
-	 Adafruit_WS2801* matrix;
-	 byte* sequence;
-	 uint8_t frameCount;
-	 uint8_t currentFrame;
+	 sequence_data_t* data;
+	 uint8_t currentFrameIndex;
 };
 
 #endif

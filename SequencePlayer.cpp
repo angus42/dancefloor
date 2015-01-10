@@ -1,57 +1,30 @@
 #include "SequencePlayer.h"
 
-SequencePlayer::SequencePlayer(Adafruit_WS2801* m, byte* s, uint8_t fc) {
-	matrix = m;
-	sequence = s;
-	frameCount = fc;
-	currentFrame = 0;
+SequencePlayer::SequencePlayer() {
 }
 
-void SequencePlayer::nextFrame() {
-	currentFrame++;
-	if (currentFrame >= frameCount)
-		currentFrame = 0;
+void SequencePlayer::configure(void* d) {
+	data = (sequence_data_t*)d;
+	currentFrameIndex = 0;
 }
 
-void SequencePlayer::showFrame() {
-#ifdef _DEBUG
-	unsigned long startMicros = micros();
-#endif
-
-	int i;
-	int fs = sizeof(frame_t);
-	for (i = 0; i < matrix->numPixels(); i++) {
-		uint32_t c = color(
-			*(sequence + currentFrame * fs + i * 3 + 2),
-			*(sequence + currentFrame * fs + i * 3 + 1),
-			*(sequence + currentFrame * fs + i * 3 + 0));
-		matrix->setPixelColor(i, c);
-#ifdef _DEBUG
-		// Serial.print("#");
-		// Serial.print(c);
-#endif
-	}
-	matrix->show();
+void SequencePlayer::moveNextFrame() {
+	currentFrameIndex++;
+	if (currentFrameIndex >= data->frame_count)
+		currentFrameIndex = 0;
 
 #ifdef _DEBUG
-	unsigned long endMicros = micros();
 	Serial.print("~");
-	Serial.print(currentFrame);
-	Serial.print("@");
-	Serial.println(endMicros - startMicros);
+	Serial.print(currentFrameIndex);
 #endif
 }
 
-// Create a 24 bit color value from R,G,B
-uint32_t SequencePlayer::color(byte r, byte g, byte b)
-{
-	uint32_t c;
-	c = r;
-	c <<= 8;
-	c |= g;
-	c <<= 8;
-	c |= b;
-	return c;
+byte* SequencePlayer::getCurrentFrame() {
+	if (data->sequence == NULL)
+		return NULL;
+
+	int fs = sizeof(frame_t);
+	return (byte*)(data->sequence + currentFrameIndex * fs);
 }
 
 
