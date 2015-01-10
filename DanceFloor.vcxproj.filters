@@ -33,6 +33,12 @@
     <ClInclude Include="FourColor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="rainbow_diag_top_to_bottom_sequence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sequences.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_WS2801.cpp">

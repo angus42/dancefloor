@@ -21,6 +21,10 @@ const uint8_t ledMatrixClockPin = 5;
 
 typedef byte frame_t[matrixWidth * matrixHeight][3];
 typedef frame_t sequence_t[];
+typedef struct sequence_data {
+	byte *sequence;
+	byte frame_count;
+} sequence_data_t;
 
 #endif
 

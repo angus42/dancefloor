@@ -2,7 +2,7 @@
 #include "Adafruit_WS2801.h"
 #include "SequencePlayer.h"
 #include "Config.h"
-#include "FourColor.h"
+#include "sequences.h"
 
 volatile int intCount = 0;
 volatile bool ledOn = LOW;
@@ -10,7 +10,7 @@ unsigned long lastIntMillis;
 unsigned int lastIntCount;
 
 Adafruit_WS2801 matrix(matrixWidth, matrixHeight, ledMatrixDataPin, ledMatrixClockPin, WS2801_RGB);
-SequencePlayer player(&matrix, (byte*)&FourColor, sizeof(FourColor) / sizeof(frame_t));
+SequencePlayer player(&matrix, sequences[0].sequence, sequences[0].frame_count);
 
 void setup() {
 	pinMode(ledPin, OUTPUT);
