@@ -22,18 +22,22 @@ void SequencePlayer::showFrame() {
 	int fs = sizeof(frame_t);
 	for (i = 0; i < matrix->numPixels(); i++) {
 		uint32_t c = color(
-			*(sequence + currentFrame * fs + i * 3 + 0),
+			*(sequence + currentFrame * fs + i * 3 + 2),
 			*(sequence + currentFrame * fs + i * 3 + 1),
-			*(sequence + currentFrame * fs + i * 3 + 2));
+			*(sequence + currentFrame * fs + i * 3 + 0));
 		matrix->setPixelColor(i, c);
-		Serial.print("#");
-		Serial.print(c);
+#ifdef _DEBUG
+		// Serial.print("#");
+		// Serial.print(c);
+#endif
 	}
 	matrix->show();
 
 #ifdef _DEBUG
 	unsigned long endMicros = micros();
-	Serial.print("%");
+	Serial.print("~");
+	Serial.print(currentFrame);
+	Serial.print("@");
 	Serial.println(endMicros - startMicros);
 #endif
 }

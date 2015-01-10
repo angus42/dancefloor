@@ -10,24 +10,27 @@ unsigned long lastIntMillis;
 unsigned int lastIntCount;
 
 Adafruit_WS2801 matrix(matrixWidth, matrixHeight, ledMatrixDataPin, ledMatrixClockPin, WS2801_RGB);
-SequencePlayer player(&matrix, (byte*) &FourColor, 4);
+SequencePlayer player(&matrix, (byte*)&FourColor, sizeof(FourColor) / sizeof(frame_t));
 
 void setup() {
 	pinMode(ledPin, OUTPUT);
 	attachInterrupt(soundSensorInt, soundTrigger, FALLING);
-	// Serial.begin(38400);
+	matrix.begin();
 	Serial.begin(115200);
 }
 
 void loop() {
 	digitalWrite(ledPin, ledOn);
-	Serial.println(intCount);
-
 	player.showFrame();
 	delay(50);
+
 	if (lastIntCount != intCount) {
 		player.nextFrame();
 		lastIntCount = intCount;
+#ifdef _DEBUG
+		Serial.print("+");
+		Serial.println(intCount);
+#endif
 	}
 }
 
