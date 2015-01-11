@@ -14,7 +14,7 @@ void SequencePlayer::moveNextFrame() {
 		currentFrameIndex = 0;
 
 #ifdef _DEBUG
-	Serial.print("~");
+	Serial.print("f");
 	Serial.print(currentFrameIndex);
 #endif
 }

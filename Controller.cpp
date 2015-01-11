@@ -7,8 +7,8 @@ Controller::Controller() {
 	frameRenderer = new FrameRenderer(matrix);
 	sequencePlayer = new SequencePlayer();
 
-	intCount = 0;
-	ledOn = LOW;
+	beat_count = 0;
+	beatLedOn = LOW;
 }
 
 void Controller::setup() {
@@ -18,41 +18,49 @@ void Controller::setup() {
 }
 
 void Controller::loop() {
-	if (lastIntCount != intCount) {
+	unsigned long loop_start = millis();
+
+	if (last_beat_count != beat_count) {
+		last_beat_count = beat_count;
 		sequencePlayer->moveNextFrame();
-		lastIntCount = intCount;
+		beatLedOn = !beatLedOn;
+
 #ifdef _DEBUG
 		Serial.print("+");
-		Serial.println(intCount);
+		Serial.println(beat_count);
 #endif
 	}
 
 	byte* frame = sequencePlayer->getCurrentFrame();
 	frameRenderer->render(frame);
 
-	digitalWrite(ledPin, ledOn);
-	delay(50);
+	// overflow of substraction will correctly take care of timer overflow
+	// after approximately 50 days - it's a miracle!
+	unsigned long loop_duration = millis() - loop_start;
+	unsigned long frame_delay = traget_frame_duration_millis - loop_duration;
+	if (frame_delay > 0) {
+		delay(frame_delay);
+	}
+#ifdef _DEBUG
+	Serial.print("d");
+	Serial.println(frame_delay);
+#endif
 }
 
 void Controller::soundTrigger() {
-	ledOn = !ledOn;
-	intCount++;
+	// we use volatile variables to communicate between ISR and main loop
+	// if (mode == STL)
+		beat_count++;
 }
 
-/*
-void Controller::setSpeed(int value) {
+void Controller::setSpeed(uint16_t bpm) {
 	//
 }
 
-void Controller::toggleSoundToLight() {
+void Controller::toggleMode() {
 	//
 }
 
 void Controller::toggleProgram() {
 	//
 }
-
-void Controller::randomProgramMode() {
-	//
-}
-*/

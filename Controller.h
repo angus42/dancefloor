@@ -16,21 +16,28 @@
 class Controller
 {
  public:
-	 Controller();
+	Controller();
 
-	 void setup();
-	 void loop();
+	void setup();
+	void loop();
 
-	 void soundTrigger();
+	void soundTrigger();
+	void setSpeed(uint16_t bpm);
+	void toggleMode();
+	void toggleProgram();
+
+	bool beatLedOn;
 
  private:
-	 Adafruit_WS2801* matrix;
-	 FrameRenderer* frameRenderer;
-	 SequencePlayer* sequencePlayer;
+	Adafruit_WS2801* matrix;
+	FrameRenderer* frameRenderer;
+	SequencePlayer* sequencePlayer;
 
-	 volatile int intCount;
-	 volatile bool ledOn;
-	 unsigned int lastIntCount;
+	volatile uint8_t mode;
+	volatile uint8_t prog;
+	volatile uint16_t beat_interval; // just enouth for 1 bpm in milliseconds
+	volatile uint16_t beat_count;
+	uint16_t last_beat_count;
 };
 
 #endif

@@ -25,8 +25,8 @@ void FrameRenderer::render(byte* frame) {
 
 #ifdef _DEBUG
 	unsigned long endMicros = micros();
-	Serial.print("@");
-	Serial.println(endMicros - startMicros);
+	Serial.print("r");
+	Serial.print(endMicros - startMicros);
 #endif
 }
 
