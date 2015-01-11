@@ -8,7 +8,7 @@ void SequencePlayer::configure(void* d) {
 	currentFrameIndex = 0;
 }
 
-void SequencePlayer::moveNextFrame() {
+void SequencePlayer::beat() {
 	currentFrameIndex++;
 	if (currentFrameIndex >= data->frame_count)
 		currentFrameIndex = 0;
@@ -19,7 +19,7 @@ void SequencePlayer::moveNextFrame() {
 #endif
 }
 
-byte* SequencePlayer::getCurrentFrame() {
+byte* SequencePlayer::getFrame() {
 	if (data->sequence == NULL)
 		return NULL;
 

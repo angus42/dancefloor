@@ -5,7 +5,7 @@
 Controller::Controller() {
 	matrix = new Adafruit_WS2801(matrixWidth, matrixHeight, ledMatrixDataPin, ledMatrixClockPin, WS2801_RGB);
 	frameRenderer = new FrameRenderer(matrix);
-	sequencePlayer = new SequencePlayer();
+	player = new SequencePlayer();
 
 	beat_count = 0;
 	mode = BPM;
@@ -13,7 +13,7 @@ Controller::Controller() {
 	beat_interval = 500; // 120 bpm = 2 bps = 500 ms
 	beatLedOn = LOW;
 
-	sequencePlayer->configure(&sequences[prog]);
+	player->configure(&sequences[prog]);
 }
 
 void Controller::setup() {
@@ -48,11 +48,11 @@ void Controller::loop() {
 		Serial.print("p");
 		Serial.print(prog);
 #endif
-		sequencePlayer->moveNextFrame();
+		player->beat();
 		beatLedOn = !beatLedOn;
 	}
 
-	byte* frame = sequencePlayer->getCurrentFrame();
+	byte* frame = player->getFrame();
 	frameRenderer->render(frame);
 
 	// overflow of substraction will correctly take care of timer overflow
@@ -94,5 +94,5 @@ void Controller::toggleProgram() {
 		p = 0;
 	prog = p;
 
-	sequencePlayer->configure(&sequences[prog]);
+	player->configure(&sequences[prog]);
 }

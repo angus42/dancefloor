@@ -36,7 +36,7 @@ class Controller
  private:
 	Adafruit_WS2801* matrix;
 	FrameRenderer* frameRenderer;
-	SequencePlayer* sequencePlayer;
+	Player* player;
 
 	volatile uint8_t mode;
 	uint8_t prog;

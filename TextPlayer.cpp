@@ -6,10 +6,10 @@ TextPlayer::TextPlayer() {
 void TextPlayer::configure(void* d) {
 }
 
-void TextPlayer::moveNextFrame() {
+void TextPlayer::beat() {
 }
 
-byte* TextPlayer::getCurrentFrame() {
+byte* TextPlayer::getFrame() {
 	return NULL;
 }
 

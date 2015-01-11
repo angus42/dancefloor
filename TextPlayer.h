@@ -9,16 +9,16 @@
 #include "WProgram.h"
 #endif
 
-#include "Config.h"
+#include "Player.h"
 
-class TextPlayer
+class TextPlayer : public Player
 {
 public:
 	TextPlayer();
 
-	void configure(void* d);
-	void moveNextFrame();
-	byte* getCurrentFrame();
+	virtual void configure(void* d);
+	virtual void beat();
+	virtual byte* getFrame();
 
 private:
 };

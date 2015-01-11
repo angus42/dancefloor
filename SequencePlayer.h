@@ -9,16 +9,17 @@
 	#include "WProgram.h"
 #endif
 
+#include "Player.h"
 #include "Config.h"
 
-class SequencePlayer
+class SequencePlayer : public Player
 {
  public:
 	 SequencePlayer();
 
-	 void configure(void* d);
-	 void moveNextFrame();
-	 byte* getCurrentFrame();
+	 virtual void configure(void* d);
+	 virtual void beat();
+	 virtual byte* getFrame();
 
  private:
 	 sequence_data_t* data;
