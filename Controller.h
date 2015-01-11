@@ -13,6 +13,10 @@
 #include "FrameRenderer.h"
 #include "SequencePlayer.h"
 
+const uint8_t BPM = 0; // beats per minute (speed)
+const uint8_t STL = 1; // sound to light
+const uint8_t INV = 2; // invalid mode - just a marker
+
 class Controller
 {
  public:
@@ -27,6 +31,7 @@ class Controller
 	void toggleProgram();
 
 	bool beatLedOn;
+	bool modeLedOn;
 
  private:
 	Adafruit_WS2801* matrix;
@@ -34,10 +39,11 @@ class Controller
 	SequencePlayer* sequencePlayer;
 
 	volatile uint8_t mode;
-	volatile uint8_t prog;
-	volatile uint16_t beat_interval; // just enouth for 1 bpm in milliseconds
+	uint8_t prog;
+	uint16_t beat_interval; // just enouth for 1 bpm in milliseconds
 	volatile uint16_t beat_count;
 	uint16_t last_beat_count;
+	unsigned long last_beat_time;
 };
 
 #endif

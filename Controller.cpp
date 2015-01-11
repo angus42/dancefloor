@@ -8,27 +8,48 @@ Controller::Controller() {
 	sequencePlayer = new SequencePlayer();
 
 	beat_count = 0;
+	mode = BPM;
+	prog = 0;
+	beat_interval = 500; // 120 bpm = 2 bps = 500 ms
 	beatLedOn = LOW;
+
+	sequencePlayer->configure(&sequences[prog]);
 }
 
 void Controller::setup() {
-	sequencePlayer->configure(&sequences[0]);
-
 	matrix->begin();
 }
 
 void Controller::loop() {
 	unsigned long loop_start = millis();
 
+#ifdef _DEBUG
+	Serial.print("@");
+	Serial.print(loop_start);
+#endif
+
+	if (mode == BPM) {
+		if ((loop_start - last_beat_time) > beat_interval) {
+			beat_count++;
+			// calculate when beat actually should have happened
+			last_beat_time = last_beat_time + beat_interval;
+			// check if we missed some beats
+			if (last_beat_time < loop_start) {
+				last_beat_time = loop_start;
+			}
+		}
+	}
+
 	if (last_beat_count != beat_count) {
 		last_beat_count = beat_count;
-		sequencePlayer->moveNextFrame();
-		beatLedOn = !beatLedOn;
-
 #ifdef _DEBUG
 		Serial.print("+");
-		Serial.println(beat_count);
+		Serial.print(beat_count);
+		Serial.print("p");
+		Serial.print(prog);
 #endif
+		sequencePlayer->moveNextFrame();
+		beatLedOn = !beatLedOn;
 	}
 
 	byte* frame = sequencePlayer->getCurrentFrame();
@@ -49,18 +70,29 @@ void Controller::loop() {
 
 void Controller::soundTrigger() {
 	// we use volatile variables to communicate between ISR and main loop
-	// if (mode == STL)
+	if (mode == STL)
 		beat_count++;
 }
 
 void Controller::setSpeed(uint16_t bpm) {
-	//
+	beat_interval = 60000 / bpm;
 }
 
 void Controller::toggleMode() {
-	//
+	uint8_t m = mode + 1;
+	if (m == INV)
+		m = 0;
+	mode = m;
+
+	modeLedOn = mode == STL;
 }
 
 void Controller::toggleProgram() {
-	//
+	uint8_t p = prog + 1;
+	uint8_t c = sizeof(sequences) / sizeof(sequence_data_t);
+	if (p >= c)
+		p = 0;
+	prog = p;
+
+	sequencePlayer->configure(&sequences[prog]);
 }
