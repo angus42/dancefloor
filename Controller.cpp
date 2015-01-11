@@ -13,7 +13,7 @@ Controller::Controller() {
 	beat_interval = 500; // 120 bpm = 2 bps = 500 ms
 	beatLedOn = LOW;
 
-	player->configure(&sequences[prog]);
+	configureProgram();
 }
 
 void Controller::setup() {
@@ -94,5 +94,11 @@ void Controller::toggleProgram() {
 		p = 0;
 	prog = p;
 
+	configureProgram();
+}
+
+void Controller::configureProgram() {
 	player->configure(&sequences[prog]);
+	// player = programs[prog].player;
+	// player->configure(programs[prog].data);
 }

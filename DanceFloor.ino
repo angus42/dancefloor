@@ -1,7 +1,4 @@
-#include "Player.h"
-#include "TextPlayer.h"
 #include <SPI.h>
-
 #include "Controller.h"
 #include "Config.h"
 #include "fscale.h"
@@ -41,7 +38,7 @@ void loop() {
 	if (speedPotiValue != lastSpeedPotiValue) {
 		uint16_t bpm;
 		bpm = fscale(0, 1023, min_bpm, max_bpm, speedPotiValue, 0);
-		// controller.setSpeed(bpm);
+		controller.setSpeed(bpm);
 	}
 
 	int progToggleButtonValue = digitalRead(progToggleButtonPin);

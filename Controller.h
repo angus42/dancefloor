@@ -44,6 +44,8 @@ class Controller
 	volatile uint16_t beat_count;
 	uint16_t last_beat_count;
 	unsigned long last_beat_time;
+
+	void configureProgram();
 };
 
 #endif

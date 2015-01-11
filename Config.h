@@ -9,6 +9,8 @@
 	#include "WProgram.h"
 #endif
 
+#include "Player.h"
+
 // led matrix size
 const uint8_t matrixWidth = 5;
 const uint8_t matrixHeight = 5;
@@ -42,6 +44,12 @@ const uint16_t max_bpm = 1800; // we hardcode this, so scaling stays the same if
 typedef byte frame_t[matrixWidth * matrixHeight][3];
 
 typedef frame_t sequence_t[];
+
+typedef struct program_data {
+	Player *player;
+	void *data;
+} program_data_t;
+
 typedef struct sequence_data {
 	byte *sequence;
 	byte frame_count;
