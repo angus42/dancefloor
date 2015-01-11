@@ -5,7 +5,6 @@
 Controller::Controller() {
 	matrix = new Adafruit_WS2801(matrixWidth, matrixHeight, ledMatrixDataPin, ledMatrixClockPin, WS2801_RGB);
 	frameRenderer = new FrameRenderer(matrix);
-	player = new SequencePlayer();
 
 	beat_count = 0;
 	mode = BPM;
@@ -13,6 +12,7 @@ Controller::Controller() {
 	beat_interval = 500; // 120 bpm = 2 bps = 500 ms
 	beatLedOn = LOW;
 
+	init_programs();
 	configureProgram();
 }
 
@@ -58,7 +58,7 @@ void Controller::loop() {
 	// overflow of substraction will correctly take care of timer overflow
 	// after approximately 50 days - it's a miracle!
 	unsigned long loop_duration = millis() - loop_start;
-	unsigned long frame_delay = traget_frame_duration_millis - loop_duration;
+	long frame_delay = traget_frame_duration_millis - loop_duration;
 	if (frame_delay > 0) {
 		delay(frame_delay);
 	}
@@ -89,7 +89,7 @@ void Controller::toggleMode() {
 
 void Controller::toggleProgram() {
 	uint8_t p = prog + 1;
-	uint8_t c = sizeof(sequences) / sizeof(sequence_data_t);
+	uint8_t c = sizeof(programs) / sizeof(program_data_t);
 	if (p >= c)
 		p = 0;
 	prog = p;
@@ -98,7 +98,6 @@ void Controller::toggleProgram() {
 }
 
 void Controller::configureProgram() {
-	player->configure(&sequences[prog]);
-	// player = programs[prog].player;
-	// player->configure(programs[prog].data);
+	player = programs[prog].player;
+	player->configure(programs[prog].data);
 }
