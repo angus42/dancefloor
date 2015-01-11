@@ -13,12 +13,12 @@
 #define __AVR_ATmega328p__
 #define __AVR_ATmega328P__
 #define _DEBUG 1
-#define _VMDEBUG 1
 #define ARDUINO 106
 #define ARDUINO_MAIN
 #define __AVR__
 #define __avr__
 #define F_CPU 16000000L
+#define _NO_HARDWARE
 #define __cplusplus
 #define __inline__
 #define __asm__(x)

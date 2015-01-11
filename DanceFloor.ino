@@ -38,18 +38,24 @@ void loop() {
 	if (speedPotiValue != lastSpeedPotiValue) {
 		uint16_t bpm;
 		bpm = fscale(0, 1023, min_bpm, max_bpm, speedPotiValue, 0);
+#ifndef _NO_HARDWARE
 		controller.setSpeed(bpm);
+#endif
 	}
 
 	int progToggleButtonValue = digitalRead(progToggleButtonPin);
 	if (lastProgToggleButtonValue == LOW && progToggleButtonValue == HIGH) {
+#ifndef _NO_HARDWARE
 		controller.toggleProgram();
+#endif
 	}
 	lastProgToggleButtonValue = progToggleButtonValue;
 
 	int modeToggleButtonValue = digitalRead(modeToggleButtonPin);
 	if (lastModeToggleButtonValue == LOW && modeToggleButtonValue == HIGH) {
+#ifndef _NO_HARDWARE
 		controller.toggleMode();
+#endif
 	}
 	lastModeToggleButtonValue = modeToggleButtonValue;
 
