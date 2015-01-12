@@ -16,9 +16,9 @@ void FrameRenderer::render(byte* frame) {
 			*(frame + i * 3 + 1),
 			*(frame + i * 3));
 		matrix->setPixelColor(i, c);
-#ifdef _DEBUG
-		// Serial.print("#");
-		// Serial.print(c);
+#if defined(_DEBUG) && defined(_NO_HARDWARE)
+		Serial.print("#");
+		Serial.print(c);
 #endif
 	}
 	matrix->show();

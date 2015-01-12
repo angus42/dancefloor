@@ -11,7 +11,6 @@
 
 #include "Adafruit_WS2801.h"
 #include "FrameRenderer.h"
-#include "SequencePlayer.h"
 
 const uint8_t BPM = 0; // beats per minute (speed)
 const uint8_t STL = 1; // sound to light

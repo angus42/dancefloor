@@ -1,6 +1,6 @@
 #include "Controller.h"
 #include "Config.h"
-#include "sequences.h"
+#include "programs.h"
 
 Controller::Controller() {
 	matrix = new Adafruit_WS2801(matrixWidth, matrixHeight, ledMatrixDataPin, ledMatrixClockPin, WS2801_RGB);
@@ -53,6 +53,13 @@ void Controller::loop() {
 	}
 
 	byte* frame = player->getFrame();
+	if (frame == NULL) {
+		// program tells us that it is done
+		toggleProgram();
+		loop();
+		return;
+	}
+
 	frameRenderer->render(frame);
 
 	// overflow of substraction will correctly take care of timer overflow
@@ -91,7 +98,8 @@ void Controller::toggleProgram() {
 	uint8_t p = prog + 1;
 	uint8_t c = sizeof(programs) / sizeof(program_data_t);
 	if (p >= c)
-		p = 0;
+		// never return to welcome program
+		p = 1;
 	prog = p;
 
 	configureProgram();
