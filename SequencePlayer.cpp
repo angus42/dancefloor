@@ -27,4 +27,4 @@ byte* SequencePlayer::getFrame() {
 	return (byte*)(data->sequence + currentFrameIndex * fs);
 }
 
-
+SequencePlayer sequencePlayer;

@@ -26,5 +26,7 @@ class SequencePlayer : public Player
 	 uint8_t currentFrameIndex;
 };
 
+extern SequencePlayer sequencePlayer;
+
 #endif
 

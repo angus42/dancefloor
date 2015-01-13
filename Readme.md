@@ -32,3 +32,5 @@ the JSON file and generates a header file with a palette and sequence C array fr
 
 [Adafruit WS2801 Library on GitHub](https://github.com/adafruit/Adafruit-WS2801-Library)
 
+[Plasma code by bidouille](http://www.bidouille.org/prog/plasma)
+

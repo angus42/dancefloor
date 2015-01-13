@@ -57,6 +57,8 @@ void soundTrigger();
 #include "C:\Users\angus\Source\Repos\dancefloor\FourColor.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\FrameRenderer.cpp"
 #include "C:\Users\angus\Source\Repos\dancefloor\FrameRenderer.h"
+#include "C:\Users\angus\Source\Repos\dancefloor\PlasmaPlayer.cpp"
+#include "C:\Users\angus\Source\Repos\dancefloor\PlasmaPlayer.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\Player.cpp"
 #include "C:\Users\angus\Source\Repos\dancefloor\Player.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\SequencePlayer.cpp"

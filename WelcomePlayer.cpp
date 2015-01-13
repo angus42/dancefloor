@@ -18,9 +18,10 @@ byte* WelcomePlayer::getFrame() {
 		// update 4 times per second
 		get_frame_count = 0;
 		x_pos++;
-		if (x_pos >= x_max)
-		// we are done with the welcome text
+		if (x_pos >= x_max) {
+			// we are done with the welcome text
 			return NULL;
+		}
 		fillFrame();
 	}
 	else {
@@ -48,3 +49,5 @@ void WelcomePlayer::fillFrame() {
 		}
 	}
 }
+
+WelcomePlayer welcomePlayer;
