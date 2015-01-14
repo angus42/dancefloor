@@ -31,10 +31,11 @@ namespace SequencePalletizer
                     {
                         frame_count++;
                         if (!firstStep)
-                            headerFile.WriteLine(", ");
+                            headerFile.WriteLine(",");
                         else
                             firstStep = false;
-                        headerFile.WriteLine("{");
+                        headerFile.Write("{");
+                        headerFile.WriteLine();
                         var firstRow = true;
                         foreach (var row in step.frame)
                         {
@@ -42,7 +43,7 @@ namespace SequencePalletizer
                                 headerFile.WriteLine(", ");
                             else
                                 firstRow = false;
-                            headerFile.Write("  { ");
+                            headerFile.Write("  ");
                             var firstPixel = true;
                             foreach (var pixel in row)
                             {
@@ -60,8 +61,8 @@ namespace SequencePalletizer
                                 }
                                 headerFile.Write("0x{0:x2}", i);
                             }
-                            headerFile.Write(" }");
                         }
+                        headerFile.WriteLine();
                         headerFile.Write("}");
                     }
                     headerFile.WriteLine("};");

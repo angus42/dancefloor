@@ -45,11 +45,11 @@ const uint16_t max_bpm = 1800; // we hardcode this, so scaling stays the same if
 
 typedef byte frame_t[matrixWidth * matrixHeight][3];
 
-typedef byte palette_frame_t[matrixWidth * matrixHeight][3];
+typedef byte palette_frame_t[matrixWidth * matrixHeight];
 
 typedef frame_t sequence_t[];
 
-typedef frame_t palette_sequence_t[];
+typedef palette_frame_t palette_sequence_t[];
 
 typedef byte color_palette_t[][3];
 

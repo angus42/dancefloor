@@ -38,14 +38,15 @@ void WelcomePlayer::fillFrame() {
 	for (iy = 0; iy < matrixHeight; iy++) {
 		for (ix = 0; ix < matrixWidth; ix++) {
 			pixel = pgm_read_byte(welcome_text_scroll + (ix + x_pos) + (iy * x_max));
+			short offset = ix + iy * matrixWidth;
 			if (pixel == 1) {
-				shared_frame[ix + iy * 5][0] = 63 * iy;
-				shared_frame[ix + iy * 5][1] = 255 - (63 * iy);
-				shared_frame[ix + iy * 5][2] = x_pos * 4;
+				shared_frame[offset][0] = 63 * iy;
+				shared_frame[offset][1] = 255 - (63 * iy);
+				shared_frame[offset][2] = x_pos * 4;
 			} else {
-				shared_frame[ix + iy * 5][0] = 0;
-				shared_frame[ix + iy * 5][1] = 0;
-				shared_frame[ix + iy * 5][2] = 15;
+				shared_frame[offset][0] = 0;
+				shared_frame[offset][1] = 0;
+				shared_frame[offset][2] = 15;
 			}
 		}
 	}

@@ -53,9 +53,10 @@ double PlasmaPlayer::plasma(float x, float y, float time) {
 }
 
 void PlasmaPlayer::colorMap(uint8_t x, uint8_t y, double v) {
-	shared_frame[x + y * 5][0] = 255 * (.5 + .5 * sin(PI * v));
-	shared_frame[x + y * 5][1] = 255 * (.5 + .5 * cos(PI * v));
-	shared_frame[x + y * 5][2] = 0;
+	short offset = x + y * matrixWidth;
+	shared_frame[offset][0] = 255 * (.5 + .5 * sin(PI * v));
+	shared_frame[offset][1] = 255 * (.5 + .5 * cos(PI * v));
+	shared_frame[offset][2] = 0;
 }
 
 PlasmaPlayer plasmaPlayer;

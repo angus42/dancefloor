@@ -30,12 +30,6 @@
     <ClInclude Include="SequencePlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FourColor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="rainbow_diag_top_to_bottom_sequence.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FrameRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -58,6 +52,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlasmaPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PaletteSequencePlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryFree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dummy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rainbow_diag_top_to_bottom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -84,6 +90,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PlasmaPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PaletteSequencePlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryFree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
