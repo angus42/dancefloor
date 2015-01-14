@@ -1,6 +1,6 @@
 #include "Config.h"
 
-const PROGMEM sequence_t rainbow_diag_top_to_bottom_sequence = {
+const PROGMEM palette_sequence_t rainbow_diag_top_to_bottom_sequence = {
 {
   { 0x00, 0x01, 0x02, 0x03, 0x04 }, 
   { 0x01, 0x02, 0x03, 0x04, 0x05 }, 
@@ -59,3 +59,5 @@ const PROGMEM color_palette_t rainbow_diag_top_to_bottom_palette = {
   { 0x00, 0x54, 0xff }, 
   { 0x27, 0x00, 0xff }, 
   { 0xff, 0x00, 0xea }};
+
+const palette_sequence_data_t rainbow_diag_top_to_bottom_program = { (byte*)&rainbow_diag_top_to_bottom_sequence, 8, (byte*)&rainbow_diag_top_to_bottom_palette };

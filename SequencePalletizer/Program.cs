@@ -10,24 +10,26 @@ namespace SequencePalletizer
     {
         static void Main(string[] args)
         {
-            var color_palette = new List<Color>();
             string name = null;
-            string headerFilePath = Path.ChangeExtension(args[0], ".h");
+            int frame_count = 0;
+            var color_palette = new List<Color>();
+            var headerFilePath = Path.ChangeExtension(args[0], ".h");
             if (File.Exists(headerFilePath))
                 File.Delete(headerFilePath);
             using (var headerFile = File.CreateText(headerFilePath))
             {
-                using (var sequenzerFile = File.OpenText(args[0]))
-                using (var sequencerFileReader = new JsonTextReader(sequenzerFile))
+                using (var sequencerFile = File.OpenText(args[0]))
+                using (var sequencerFileReader = new JsonTextReader(sequencerFile))
                 {
                     dynamic root = (JObject)JToken.ReadFrom(sequencerFileReader);
                     name = root.name;
                     headerFile.WriteLine("#include \"Config.h\"");
                     headerFile.WriteLine();
-                    headerFile.WriteLine("const PROGMEM sequence_t {0}_sequence = {{", name);
-                    bool firstStep = true;
+                    headerFile.WriteLine("const PROGMEM palette_sequence_t {0}_sequence = {{", name);
+                    var firstStep = true;
                     foreach (var step in root.steps)
                     {
+                        frame_count++;
                         if (!firstStep)
                             headerFile.WriteLine(", ");
                         else
@@ -76,6 +78,8 @@ namespace SequencePalletizer
                     headerFile.Write("  {{ 0x{0:x2}, 0x{1:x2}, 0x{2:x2} }}", c.R, c.G, c.B);
                 }
                 headerFile.WriteLine("};");
+                headerFile.WriteLine();
+                headerFile.WriteLine("const palette_sequence_data_t {0}_program = {{ (byte*)&{0}_sequence, {1}, (byte*)&{0}_palette }};", name, frame_count);
             }
         }
     }

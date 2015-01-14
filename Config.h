@@ -45,7 +45,13 @@ const uint16_t max_bpm = 1800; // we hardcode this, so scaling stays the same if
 
 typedef byte frame_t[matrixWidth * matrixHeight][3];
 
+typedef byte palette_frame_t[matrixWidth * matrixHeight][3];
+
 typedef frame_t sequence_t[];
+
+typedef frame_t palette_sequence_t[];
+
+typedef byte color_palette_t[][3];
 
 static frame_t shared_frame;
 
@@ -58,6 +64,12 @@ typedef struct sequence_data {
 	byte *sequence;
 	byte frame_count;
 } sequence_data_t;
+
+typedef struct palette_sequence_data {
+	byte *sequence;
+	byte frame_count;
+	byte *color_palette;
+} palette_sequence_data_t;
 
 typedef struct text_data {
 	char* message;
