@@ -27,11 +27,11 @@ byte* PlasmaPlayer::getFrame() {
 		time = 0;
 	}
 
-	float kx = matrixWidth / matrixHeight;
+	float kx = (float)matrixWidth / (float)matrixHeight;
 	for (uint8_t y = 0; y < matrixHeight; y++) {
-		float yy = y / matrixHeight - .5;
+		float yy = y / (float)matrixHeight - .5;
 		for (uint8_t x = 0; x < matrixWidth; x++) {
-			float xx = kx * x / matrixWidth - kx / 2;
+			float xx = kx * x / (float)matrixWidth - kx / 2.0;
 			double v = plasma(xx, yy, time);
 			colorMap(x, y, v);
 		}
