@@ -10,11 +10,10 @@ program active.
 ## STL
 LED (Red) and button that switched and indicates Sound-to-Light mode.
 
-## SPEED/SENSE
-A poti to adjust the speed in normal mode or sensitivity in Sount-to-Light mode.
+## SPEED (SENSE)
+A poti to adjust the speed in normal mode (or sensitivity in Sount-to-Light mode).
 
-## XFADE
-Crossfade between steps in a sequence.
+_Notice:_ Sound-to-Light sensitivity is not supported in the current hardware version.
 
 ## MISC
 LED (Blue) and button for future extension...
@@ -27,6 +26,16 @@ LED (Blue) and button for future extension...
 Instead of storing full RGB values store indices into a palette for each sequence.
 Then we do not need _Export to C_ in the Sequencer but a special tool that parses
 the JSON file and generates a header file with a palette and sequence C array from it.
+
+### Random program change
+Change program automatically after a random amount of beats. Range of possible beats is 2 to 60,
+maybe with a (gausian) norman distribution. The target program is also selected randomly
+(welcome program excluded).
+
+### Frame Interpolation
+Helper function to interpolate between two frames (Crossfade).
+A sequence program must opt in for this.
+
 
 ## Used third party software
 
