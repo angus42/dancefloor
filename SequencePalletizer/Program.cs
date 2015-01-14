@@ -12,25 +12,38 @@ namespace SequencePalletizer
         static void Main(string[] args)
         {
             var color_palette = new List<Color>();
+            string name = null;
             using (StreamReader file = File.OpenText(args[0]))
             using (JsonTextReader reader = new JsonTextReader(file))
             {
                 dynamic root = (JObject)JToken.ReadFrom(reader);
-                var name = root.name;
-                Console.WriteLine(name);
+                name = root.name;
+                Console.WriteLine("#include \"Config.h\"");
+                Console.WriteLine();
+                Console.WriteLine("const PROGMEM sequence_t {0}_sequence = {{", name);
+                bool firstStep = true;
                 foreach (var step in root.steps)
                 {
+                    if (!firstStep)
+                        Console.WriteLine(", ");
+                    else
+                        firstStep = false;
                     Console.WriteLine("{");
+                    bool firstRow = true;
                     foreach (var row in step.frame)
                     {
-                        Console.Write("{ ");
-                        bool first = true;
+                        if (!firstRow)
+                            Console.WriteLine(", ");
+                        else
+                            firstRow = false;
+                        Console.Write("  { ");
+                        bool firstPixel = true;
                         foreach (var pixel in row)
                         {
-                            if (!first)
+                            if (!firstPixel)
                                 Console.Write(", ");
                             else
-                                first = false;
+                                firstPixel = false;
                             var v = pixel.v.ToString();
                             var c = System.Drawing.ColorTranslator.FromHtml(v);
                             var i = color_palette.IndexOf(c);
@@ -42,18 +55,23 @@ namespace SequencePalletizer
                             Console.Write("0x{0:x2}", i);
                         }
                         Console.Write(" }");
-                        Console.WriteLine();
                     }
                     Console.Write("}");
-                    Console.WriteLine();
                 }
-                Console.WriteLine();
+                Console.WriteLine("};");
                 Console.WriteLine();
             }
+            Console.WriteLine("const PROGMEM color_palette_t {0}_palette = {{", name);
+            bool firstColor = true;
             foreach (var c in color_palette)
             {
-                Console.WriteLine("{{ {0:x2}, {1:x2}, {2:x2} }}", c.R, c.G, c.B);
+                if (!firstColor)
+                    Console.WriteLine(", ");
+                else
+                    firstColor = false;
+                Console.Write("  {{ 0x{0:x2}, 0x{1:x2}, 0x{2:x2} }}", c.R, c.G, c.B);
             }
+            Console.WriteLine("};");
             Console.ReadLine();
         }
     }
