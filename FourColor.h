@@ -1,6 +1,6 @@
 #include "Config.h"
 
-static sequence_t FourColor = {
+const PROGMEM sequence_t FourColor = {
 	{ { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 },
 	{ 231, 2, 2 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 },
 	{ 0, 0, 0 }, { 0, 0, 0 }, { 231, 2, 2 }, { 0, 0, 0 }, { 0, 0, 0 },

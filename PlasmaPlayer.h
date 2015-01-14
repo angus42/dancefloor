@@ -22,7 +22,6 @@ public:
 	virtual byte* getFrame();
 
 private:
-	// frame_t frame;
 	int frame_count;
 	int beat_frame_count;
 	float bps;

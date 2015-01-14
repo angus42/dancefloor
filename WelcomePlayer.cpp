@@ -1,3 +1,4 @@
+#include <avr/pgmspace.h>
 #include "WelcomePlayer.h"
 
 WelcomePlayer::WelcomePlayer() {
@@ -27,7 +28,7 @@ byte* WelcomePlayer::getFrame() {
 	else {
 		get_frame_count++;
 	}
-	return (byte*)frame;
+	return (byte*)shared_frame;
 }
 
 void WelcomePlayer::fillFrame() {
@@ -36,15 +37,15 @@ void WelcomePlayer::fillFrame() {
 	byte pixel;
 	for (iy = 0; iy < matrixHeight; iy++) {
 		for (ix = 0; ix < matrixWidth; ix++) {
-			pixel = *(welcome_text_scroll + (ix + x_pos) + (iy * x_max));
+			pixel = pgm_read_byte(welcome_text_scroll + (ix + x_pos) + (iy * x_max));
 			if (pixel == 1) {
-				frame[ix + iy * 5][0] = 63 * iy;
-				frame[ix + iy * 5][1] = 255 - (63 * iy);
-				frame[ix + iy * 5][2] = x_pos * 4;
+				shared_frame[ix + iy * 5][0] = 63 * iy;
+				shared_frame[ix + iy * 5][1] = 255 - (63 * iy);
+				shared_frame[ix + iy * 5][2] = x_pos * 4;
 			} else {
-				frame[ix + iy * 5][0] = 0;
-				frame[ix + iy * 5][1] = 0;
-				frame[ix + iy * 5][2] = 15;
+				shared_frame[ix + iy * 5][0] = 0;
+				shared_frame[ix + iy * 5][1] = 0;
+				shared_frame[ix + iy * 5][2] = 15;
 			}
 		}
 	}

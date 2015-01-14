@@ -11,6 +11,8 @@
 
 #include "Player.h"
 
+// we keep all consts the in RAM (not PROGMEM) for fast access
+
 // led matrix size
 const uint8_t matrixWidth = 5;
 const uint8_t matrixHeight = 5;
@@ -44,6 +46,8 @@ const uint16_t max_bpm = 1800; // we hardcode this, so scaling stays the same if
 typedef byte frame_t[matrixWidth * matrixHeight][3];
 
 typedef frame_t sequence_t[];
+
+static frame_t shared_frame;
 
 typedef struct program_data {
 	Player *player;

@@ -1,3 +1,4 @@
+#include <avr/pgmspace.h>
 #include "SequencePlayer.h"
 
 SequencePlayer::SequencePlayer() {
@@ -24,7 +25,8 @@ byte* SequencePlayer::getFrame() {
 		return NULL;
 
 	int fs = sizeof(frame_t);
-	return (byte*)(data->sequence + currentFrameIndex * fs);
+	memcpy_P(&shared_frame, (prog_void*)(data->sequence + currentFrameIndex * fs), fs);
+	return (byte*)shared_frame;
 }
 
 SequencePlayer sequencePlayer;

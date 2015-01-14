@@ -1,6 +1,6 @@
 #include "Config.h"
 
-static sequence_t rainbow_diag_top_to_bottom_sequence = {
+const PROGMEM sequence_t rainbow_diag_top_to_bottom_sequence = {
 {{ 255, 0, 32 },{ 255, 137, 0 },{ 204, 255, 0 },{ 36, 255, 0 },{ 0, 255, 223 },
 { 255, 137, 0 },{ 204, 255, 0 },{ 36, 255, 0 },{ 0, 255, 223 },{ 0, 84, 255 },
 { 204, 255, 0 },{ 36, 255, 0 },{ 0, 255, 223 },{ 0, 84, 255 },{ 39, 0, 255 },

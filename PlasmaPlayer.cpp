@@ -3,7 +3,6 @@
 
 PlasmaPlayer::PlasmaPlayer() {
 	bps = 1.0;
-	// frame = (frame_t*)malloc(sizeof(frame_t));
 }
 
 void PlasmaPlayer::configure(void* d) {
@@ -38,7 +37,7 @@ byte* PlasmaPlayer::getFrame() {
 		}
 	}
 
-	return (byte*)NULL; // frame;
+	return (byte*)shared_frame;
 }
 
 double PlasmaPlayer::plasma(float x, float y, float time) {
@@ -54,9 +53,9 @@ double PlasmaPlayer::plasma(float x, float y, float time) {
 }
 
 void PlasmaPlayer::colorMap(uint8_t x, uint8_t y, double v) {
-	// frame[x + y * 5][0] = 255 * (.5 + .5 * sin(PI * v));
-	// frame[x + y * 5][1] = 255 * (.5 + .5 * cos(PI * v));
-	// frame[x + y * 5][2] = 0;
+	shared_frame[x + y * 5][0] = 255 * (.5 + .5 * sin(PI * v));
+	shared_frame[x + y * 5][1] = 255 * (.5 + .5 * cos(PI * v));
+	shared_frame[x + y * 5][2] = 0;
 }
 
 PlasmaPlayer plasmaPlayer;

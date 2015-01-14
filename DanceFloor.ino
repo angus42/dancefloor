@@ -2,6 +2,7 @@
 #include "Controller.h"
 #include "Config.h"
 #include "fscale.h"
+#include "MemoryFree.h"
 
 unsigned long lastSoundTriggerMillis;
 int lastSpeedPotiValue;
@@ -20,6 +21,11 @@ void setup() {
 	attachInterrupt(soundSensorInt, soundTrigger, FALLING);
 
 	controller.setup();
+
+#ifdef _DEBUG
+	Serial.print(F("free memory: "));
+	Serial.println(freeMemory());
+#endif
 }
 
 void loop() {
