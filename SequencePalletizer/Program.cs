@@ -1,9 +1,8 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace SequencePalletizer
 {
@@ -13,66 +12,71 @@ namespace SequencePalletizer
         {
             var color_palette = new List<Color>();
             string name = null;
-            using (StreamReader file = File.OpenText(args[0]))
-            using (JsonTextReader reader = new JsonTextReader(file))
+            string headerFilePath = Path.ChangeExtension(args[0], ".h");
+            if (File.Exists(headerFilePath))
+                File.Delete(headerFilePath);
+            using (var headerFile = File.CreateText(headerFilePath))
             {
-                dynamic root = (JObject)JToken.ReadFrom(reader);
-                name = root.name;
-                Console.WriteLine("#include \"Config.h\"");
-                Console.WriteLine();
-                Console.WriteLine("const PROGMEM sequence_t {0}_sequence = {{", name);
-                bool firstStep = true;
-                foreach (var step in root.steps)
+                using (var sequenzerFile = File.OpenText(args[0]))
+                using (var sequencerFileReader = new JsonTextReader(sequenzerFile))
                 {
-                    if (!firstStep)
-                        Console.WriteLine(", ");
-                    else
-                        firstStep = false;
-                    Console.WriteLine("{");
-                    bool firstRow = true;
-                    foreach (var row in step.frame)
+                    dynamic root = (JObject)JToken.ReadFrom(sequencerFileReader);
+                    name = root.name;
+                    headerFile.WriteLine("#include \"Config.h\"");
+                    headerFile.WriteLine();
+                    headerFile.WriteLine("const PROGMEM sequence_t {0}_sequence = {{", name);
+                    bool firstStep = true;
+                    foreach (var step in root.steps)
                     {
-                        if (!firstRow)
-                            Console.WriteLine(", ");
+                        if (!firstStep)
+                            headerFile.WriteLine(", ");
                         else
-                            firstRow = false;
-                        Console.Write("  { ");
-                        bool firstPixel = true;
-                        foreach (var pixel in row)
+                            firstStep = false;
+                        headerFile.WriteLine("{");
+                        var firstRow = true;
+                        foreach (var row in step.frame)
                         {
-                            if (!firstPixel)
-                                Console.Write(", ");
+                            if (!firstRow)
+                                headerFile.WriteLine(", ");
                             else
-                                firstPixel = false;
-                            var v = pixel.v.ToString();
-                            var c = System.Drawing.ColorTranslator.FromHtml(v);
-                            var i = color_palette.IndexOf(c);
-                            if (i < 0)
+                                firstRow = false;
+                            headerFile.Write("  { ");
+                            var firstPixel = true;
+                            foreach (var pixel in row)
                             {
-                                color_palette.Add(c);
-                                i = color_palette.Count - 1;
+                                if (!firstPixel)
+                                    headerFile.Write(", ");
+                                else
+                                    firstPixel = false;
+                                var v = pixel.v.ToString();
+                                var c = System.Drawing.ColorTranslator.FromHtml(v);
+                                var i = color_palette.IndexOf(c);
+                                if (i < 0)
+                                {
+                                    color_palette.Add(c);
+                                    i = color_palette.Count - 1;
+                                }
+                                headerFile.Write("0x{0:x2}", i);
                             }
-                            Console.Write("0x{0:x2}", i);
+                            headerFile.Write(" }");
                         }
-                        Console.Write(" }");
+                        headerFile.Write("}");
                     }
-                    Console.Write("}");
+                    headerFile.WriteLine("};");
+                    headerFile.WriteLine();
                 }
-                Console.WriteLine("};");
-                Console.WriteLine();
+                headerFile.WriteLine("const PROGMEM color_palette_t {0}_palette = {{", name);
+                var firstColor = true;
+                foreach (var c in color_palette)
+                {
+                    if (!firstColor)
+                        headerFile.WriteLine(", ");
+                    else
+                        firstColor = false;
+                    headerFile.Write("  {{ 0x{0:x2}, 0x{1:x2}, 0x{2:x2} }}", c.R, c.G, c.B);
+                }
+                headerFile.WriteLine("};");
             }
-            Console.WriteLine("const PROGMEM color_palette_t {0}_palette = {{", name);
-            bool firstColor = true;
-            foreach (var c in color_palette)
-            {
-                if (!firstColor)
-                    Console.WriteLine(", ");
-                else
-                    firstColor = false;
-                Console.Write("  {{ 0x{0:x2}, 0x{1:x2}, 0x{2:x2} }}", c.R, c.G, c.B);
-            }
-            Console.WriteLine("};");
-            Console.ReadLine();
         }
     }
 }
