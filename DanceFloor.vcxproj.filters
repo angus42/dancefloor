@@ -69,6 +69,12 @@
     <ClInclude Include="Gaussian.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="jumping_blossom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="walking_tripples.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_WS2801.cpp">
