@@ -14,11 +14,11 @@ Controller controller;
 void setup() {
 	Serial.begin(115200);
 
-	pinMode(beatLedPin, OUTPUT);
-	pinMode(modeLedPin, OUTPUT);
-	pinMode(progToggleButtonPin, INPUT);
-	pinMode(modeToggleButtonPin, INPUT);
-	attachInterrupt(soundSensorInt, soundTrigger, FALLING);
+	pinMode(BEAT_LED_PIN, OUTPUT);
+	pinMode(MODE_LED_PIN, OUTPUT);
+	pinMode(PROG_TOGGLE_BUTTON_PIN, INPUT);
+	pinMode(MODE_TOGGLE_BUTTON_PIN, INPUT);
+	attachInterrupt(SOUND_SENSOR_INT, soundTrigger, FALLING);
 
 	controller.setup();
 
@@ -40,7 +40,7 @@ void loop() {
 		}
 	}
 
-	int speedPotiValue = analogRead(speedPotiPin);
+	int speedPotiValue = analogRead(SPEED_POTI_PIN);
 	if (speedPotiValue != lastSpeedPotiValue) {
 		uint16_t bpm;
 		bpm = fscale(0, 1023, min_bpm, max_bpm, speedPotiValue, 0);
@@ -49,7 +49,7 @@ void loop() {
 #endif
 	}
 
-	int progToggleButtonValue = digitalRead(progToggleButtonPin);
+	int progToggleButtonValue = digitalRead(PROG_TOGGLE_BUTTON_PIN);
 	if (lastProgToggleButtonValue == LOW && progToggleButtonValue == HIGH) {
 #ifndef _NO_HARDWARE
 		controller.toggleProgram();
@@ -57,7 +57,7 @@ void loop() {
 	}
 	lastProgToggleButtonValue = progToggleButtonValue;
 
-	int modeToggleButtonValue = digitalRead(modeToggleButtonPin);
+	int modeToggleButtonValue = digitalRead(MODE_TOGGLE_BUTTON_PIN);
 	if (lastModeToggleButtonValue == LOW && modeToggleButtonValue == HIGH) {
 #ifndef _NO_HARDWARE
 		controller.toggleMode();
@@ -67,8 +67,8 @@ void loop() {
 
 	controller.loop();
 
-	digitalWrite(beatLedPin, controller.beatLedOn);
-	digitalWrite(modeLedPin, controller.modeLedOn);
+	digitalWrite(BEAT_LED_PIN, controller.beatLedOn);
+	digitalWrite(MODE_LED_PIN, controller.modeLedOn);
 }
 
 void soundTrigger()

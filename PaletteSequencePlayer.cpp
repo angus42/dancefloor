@@ -25,10 +25,10 @@ byte* PaletteSequencePlayer::getFrame() {
 		return NULL;
 
 	int fs = sizeof(palette_frame_t);
-	for (int y = 0; y < matrixHeight; y++) {
-		for (int x = 0; x < matrixWidth; x++) {
-			byte index = pgm_read_byte((prog_void*)(data->sequence + currentFrameIndex * fs + y * matrixWidth + x));
-			short offset = x + y * matrixWidth;
+	for (int y = 0; y < MATRIX_HEIGHT; y++) {
+		for (int x = 0; x < MATRIX_WIDTH; x++) {
+			byte index = pgm_read_byte((prog_void*)(data->sequence + currentFrameIndex * fs + y * MATRIX_WIDTH + x));
+			short offset = x + y * MATRIX_WIDTH;
 			shared_frame[offset][0] = pgm_read_byte((prog_void*)(data->color_palette + index * 3));
 			shared_frame[offset][1] = pgm_read_byte((prog_void*)(data->color_palette + index * 3 + 1));
 			shared_frame[offset][2] = pgm_read_byte((prog_void*)(data->color_palette + index * 3 + 2));

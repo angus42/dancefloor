@@ -2,7 +2,7 @@
 #include "WelcomePlayer.h"
 
 WelcomePlayer::WelcomePlayer() {
-	x_max = sizeof(welcome_text_scroll) / matrixHeight;
+	x_max = sizeof(welcome_text_scroll) / MATRIX_HEIGHT;
 }
 
 void WelcomePlayer::configure(void* d) {
@@ -35,10 +35,10 @@ void WelcomePlayer::fillFrame() {
 	int ix;
 	int iy;
 	byte pixel;
-	for (iy = 0; iy < matrixHeight; iy++) {
-		for (ix = 0; ix < matrixWidth; ix++) {
+	for (iy = 0; iy < MATRIX_HEIGHT; iy++) {
+		for (ix = 0; ix < MATRIX_WIDTH; ix++) {
 			pixel = pgm_read_byte(welcome_text_scroll + (ix + x_pos) + (iy * x_max));
-			short offset = ix + iy * matrixWidth;
+			short offset = ix + iy * MATRIX_WIDTH;
 			if (pixel == 1) {
 				shared_frame[offset][0] = 63 * iy;
 				shared_frame[offset][1] = 255 - (63 * iy);

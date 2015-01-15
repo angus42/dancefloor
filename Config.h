@@ -11,23 +11,24 @@
 
 #include "Player.h"
 
-// we keep all consts the in RAM (not PROGMEM) for fast access
-
 // led matrix size
-const uint8_t matrixWidth = 5;
-const uint8_t matrixHeight = 5;
+#define MATRIX_WIDTH 5
+#define MATRIX_HEIGHT 5
 
 // I/O
 //////
 
-const uint8_t beatLedPin          = 13;
-const uint8_t speedPotiPin        = A0;
-const uint8_t progToggleButtonPin = 6;
-const uint8_t modeToggleButtonPin = 7;
-const uint8_t modeLedPin          = 8;
-const uint8_t soundSensorInt      = 0; // pin 2
-const uint8_t ledMatrixDataPin    = 4;
-const uint8_t ledMatrixClockPin   = 5;
+#define BEAT_LED_PIN 13
+#define SPEED_POTI_PIN A0
+#define PROG_TOGGLE_BUTTON_PIN 6
+#define MODE_TOGGLE_BUTTON_PIN 7
+#define MODE_LED_PIN 8
+// Int0 is on pin 2
+#define SOUND_SENSOR_INT 0
+#define LED_MATRIX_DAT_PIN 4
+#define LED_MATRIX_CLK_PIN 5
+
+// we keep these consts the in RAM (not PROGMEM) for fast access
 
 // timing
 /////////
@@ -43,9 +44,9 @@ const uint16_t max_bpm = 1800; // we hardcode this, so scaling stays the same if
 // basic types
 //////////////
 
-typedef byte frame_t[matrixWidth * matrixHeight][3];
+typedef byte frame_t[MATRIX_WIDTH * MATRIX_HEIGHT][3];
 
-typedef byte palette_frame_t[matrixWidth * matrixHeight];
+typedef byte palette_frame_t[MATRIX_WIDTH * MATRIX_HEIGHT];
 
 typedef frame_t sequence_t[];
 

@@ -3,7 +3,7 @@
 #include "programs.h"
 
 Controller::Controller() {
-	matrix = new Adafruit_WS2801(matrixWidth, matrixHeight, ledMatrixDataPin, ledMatrixClockPin, WS2801_RGB);
+	matrix = new Adafruit_WS2801(MATRIX_WIDTH, MATRIX_HEIGHT, LED_MATRIX_DAT_PIN, LED_MATRIX_CLK_PIN, WS2801_RGB);
 	frameRenderer = new FrameRenderer(matrix);
 
 	beat_count = 0;
