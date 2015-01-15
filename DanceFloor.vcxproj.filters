@@ -66,6 +66,9 @@
     <ClInclude Include="rainbow_diag_top_to_bottom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Gaussian.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_WS2801.cpp">

@@ -5,6 +5,7 @@
 #include "MemoryFree.h"
 
 unsigned long lastSoundTriggerMillis;
+unsigned long lastProgToggleButtonDownMillis;
 int lastSpeedPotiValue;
 int lastProgToggleButtonValue;
 int lastModeToggleButtonValue;
@@ -35,35 +36,46 @@ void loop() {
 		if (serial_char == 'p') {
 			controller.toggleProgram();
 		}
+		if (serial_char == 'r') {
+			controller.randomProgram();
+		}
 		if (serial_char == 'm') {
 			controller.toggleMode();
 		}
 	}
 
+#ifndef _NO_HARDWARE
 	int speedPotiValue = analogRead(SPEED_POTI_PIN);
 	if (speedPotiValue != lastSpeedPotiValue) {
 		uint16_t bpm;
 		bpm = fscale(0, 1023, min_bpm, max_bpm, speedPotiValue, 0);
-#ifndef _NO_HARDWARE
 		controller.setSpeed(bpm);
-#endif
 	}
 
+	// buttons should be active high so a long press works as expected
+
 	int progToggleButtonValue = digitalRead(PROG_TOGGLE_BUTTON_PIN);
-	if (lastProgToggleButtonValue == LOW && progToggleButtonValue == HIGH) {
-#ifndef _NO_HARDWARE
-		controller.toggleProgram();
-#endif
+	if (progToggleButtonValue == HIGH) {
+		if (lastProgToggleButtonValue == LOW) {
+			controller.toggleProgram();
+			lastProgToggleButtonDownMillis = millis();
+		}
+		else if ((millis() - lastProgToggleButtonDownMillis) > buttonDownMillis) {
+			randomSeed(micros());
+			controller.randomProgram();
+			lastProgToggleButtonDownMillis = millis();
+		}
 	}
 	lastProgToggleButtonValue = progToggleButtonValue;
 
 	int modeToggleButtonValue = digitalRead(MODE_TOGGLE_BUTTON_PIN);
-	if (lastModeToggleButtonValue == LOW && modeToggleButtonValue == HIGH) {
-#ifndef _NO_HARDWARE
-		controller.toggleMode();
-#endif
+	if (modeToggleButtonValue == HIGH) {
+		if (lastModeToggleButtonValue == LOW) {
+			controller.toggleMode();
+		}
 	}
 	lastModeToggleButtonValue = modeToggleButtonValue;
+#endif
 
 	controller.loop();
 

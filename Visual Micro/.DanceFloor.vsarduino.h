@@ -13,7 +13,6 @@
 #define __AVR_ATmega328p__
 #define __AVR_ATmega328P__
 #define _DEBUG 1
-#define _VMDEBUG 1
 #define ARDUINO 106
 #define ARDUINO_MAIN
 #define __AVR__
@@ -56,6 +55,7 @@ void soundTrigger();
 #include "C:\Users\angus\Source\Repos\dancefloor\Controller.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\FrameRenderer.cpp"
 #include "C:\Users\angus\Source\Repos\dancefloor\FrameRenderer.h"
+#include "C:\Users\angus\Source\Repos\dancefloor\Gaussian.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\MemoryFree.cpp"
 #include "C:\Users\angus\Source\Repos\dancefloor\MemoryFree.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\PaletteSequencePlayer.cpp"

@@ -20,6 +20,7 @@
 
 #define BEAT_LED_PIN 13
 #define SPEED_POTI_PIN A0
+#define RANDOM_SEED_PIN A4
 #define PROG_TOGGLE_BUTTON_PIN 6
 #define MODE_TOGGLE_BUTTON_PIN 7
 #define MODE_LED_PIN 8
@@ -37,9 +38,11 @@ const uint8_t target_fps = 60;
 const uint16_t traget_frame_duration_millis = 1000 / target_fps;
 
 const uint16_t minSoundTriggerMillis = 200;
+const uint16_t buttonDownMillis = 1000;
 
 const uint16_t min_bpm = 1; // this is realy slow
 const uint16_t max_bpm = 1800; // we hardcode this, so scaling stays the same if we change target_fps (1800 =^ 30 fps)
+
 
 // basic types
 //////////////

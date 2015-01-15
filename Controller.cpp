@@ -1,6 +1,7 @@
 #include "Controller.h"
 #include "Config.h"
 #include "programs.h"
+#include "Gaussian.h"
 
 Controller::Controller() {
 	matrix = new Adafruit_WS2801(MATRIX_WIDTH, MATRIX_HEIGHT, LED_MATRIX_DAT_PIN, LED_MATRIX_CLK_PIN, WS2801_RGB);
@@ -11,6 +12,7 @@ Controller::Controller() {
 	prog = 0;
 	beat_interval = 500; // 120 bpm = 2 bps = 500 ms
 	beatLedOn = LOW;
+	random_timer = 0;
 
 	init_programs();
 	configureProgram();
@@ -27,6 +29,13 @@ void Controller::loop() {
 	Serial.print("@");
 	Serial.print(loop_start);
 #endif
+
+	if (random_timer > 0) {
+		random_timer--;
+		if (random_timer == 0) {
+			randomProgram();
+		}
+	}
 
 	if (mode == BPM) {
 		if ((loop_start - last_beat_time) > beat_interval) {
@@ -95,14 +104,36 @@ void Controller::toggleMode() {
 }
 
 void Controller::toggleProgram() {
-	uint8_t p = prog + 1;
 	uint8_t c = sizeof(programs) / sizeof(program_data_t);
+
+	uint8_t p = prog + 1;
 	if (p >= c)
 		// never return to welcome program
 		p = 1;
 	prog = p;
 
 	configureProgram();
+
+	random_timer = 0;
+}
+
+void Controller::randomProgram() {
+	uint8_t c = sizeof(programs) / sizeof(program_data_t);
+	long p = random(1, c);
+	prog = p;
+
+#ifdef _DEBUG
+	Serial.print("z");
+	Serial.println(prog);
+#endif
+
+	configureProgram();
+
+	// schedule next randomProgram call with a normal (gaussian) distribution
+	Gaussian g = Gaussian(0, 30);
+	double val = g.random();
+	random_timer = (int)round(val - g.mean + 10 * target_fps);
+	random_timer = constrain(random_timer, 1, 20 * target_fps);
 }
 
 void Controller::configureProgram() {

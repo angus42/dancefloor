@@ -43,3 +43,5 @@ A sequence program must opt in for this.
 
 [Plasma code by bidouille](http://www.bidouille.org/prog/plasma)
 
+[Gaussian distribution class by Ivan Seidel Gomes](https://github.com/ivanseidel/Gaussian)
+

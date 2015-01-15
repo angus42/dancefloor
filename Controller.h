@@ -28,6 +28,7 @@ class Controller
 	void setSpeed(uint16_t bpm);
 	void toggleMode();
 	void toggleProgram();
+	void randomProgram();
 
 	bool beatLedOn;
 	bool modeLedOn;
@@ -43,6 +44,7 @@ class Controller
 	volatile uint16_t beat_count;
 	uint16_t last_beat_count;
 	unsigned long last_beat_time;
+	unsigned long random_timer;
 
 	void configureProgram();
 };
