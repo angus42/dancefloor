@@ -81,9 +81,11 @@
     <ClInclude Include="Adafruit_WS2801.h">
       <FileType>CppCode</FileType>
     </ClInclude>
+    <ClInclude Include="alarm.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
     <ClInclude Include="Config.h" />
     <ClInclude Include="Controller.h" />
-    <ClInclude Include="dummy.h" />
     <ClInclude Include="FrameRenderer.h" />
     <ClInclude Include="fscale.h" />
     <ClInclude Include="Gaussian.h" />
@@ -94,7 +96,13 @@
     <ClInclude Include="PaletteSequencePlayer.h" />
     <ClInclude Include="PlasmaPlayer.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="pong.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
     <ClInclude Include="rainbow_diag_top_to_bottom.h" />
+    <ClInclude Include="rot_drehend.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
     <ClInclude Include="SequencePlayer.h" />
     <ClInclude Include="programs.h" />
     <ClInclude Include="TextPlayer.h" />

@@ -60,9 +60,6 @@
     <ClInclude Include="MemoryFree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dummy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="rainbow_diag_top_to_bottom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -73,6 +70,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="walking_tripples.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="alarm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pong.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rot_drehend.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
