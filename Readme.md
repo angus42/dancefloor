@@ -49,9 +49,11 @@ volumn is exceeded. The maximum possible rate of frame changes is cut of at 300 
 To adjust the sensitivity, change the volumn of the music or move the dance floor
 away from it (especially the microphone).
 
-## BPM mode
-Pressing th *MODE* button will switch between _Sound to light- and _Beats per minute_ mode.
+## Beats per minute mode
+Pressing th *MODE* button will switch between _Sound to light_ and _Beats per minute_ mode.
 _Beats per minute_ mode is active then the control LED is off.
+In this mode the *SPEED* poti allows you to select a value between 1 and 1800
+beats per minute. The last value is equal to 30 frame changes per second.
 
 In this mode A poti to adjust the speed in normal mode (or sensitivity in Sount-to-Light mode).
 
