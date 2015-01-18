@@ -100,7 +100,7 @@ LED (Blue) and button for future extension...
 
 # License
 
-MarkdownEditing is released under the [MIT License][opensource].
+The DanceFloor project is released under the [MIT License][opensource].
 
 # Credits
 
