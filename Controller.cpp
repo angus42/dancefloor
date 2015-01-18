@@ -37,12 +37,13 @@ void Controller::loop() {
 		}
 	}
 
-	float beat_percentage = 1;
+	float beat_percentage = 1.0;
 
 	if (mode == BPM) {
 		uint32_t last_beat_elapsed = loop_start - last_beat_time;
 		if (last_beat_elapsed > beat_interval) {
 			beat_count++;
+			beat_percentage = 0.0;
 			// calculate when beat actually should have happened
 			last_beat_time = last_beat_time + beat_interval;
 			// check if we missed some beats

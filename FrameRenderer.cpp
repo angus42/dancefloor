@@ -18,7 +18,7 @@ void FrameRenderer::render(byte* frame) {
 		matrix->setPixelColor(i, c);
 #if defined(_DEBUG) && defined(_NO_HARDWARE)
 		Serial.print("#");
-		Serial.print(c);
+		Serial.print(c, HEX);
 #endif
 	}
 	matrix->show();

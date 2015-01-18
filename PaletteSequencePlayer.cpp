@@ -26,7 +26,14 @@ byte* PaletteSequencePlayer::getFrame(float beat_percentage) {
 	if (data->sequence == NULL)
 		return NULL;
 
-	bool xfade = lastFrame != NULL && data->xfade && beat_percentage < 1;
+	bool xfade = lastFrame != NULL && data->xfade && beat_percentage < 1.0;
+
+#ifdef _DEBUG
+	if (xfade) {
+		Serial.print("%");
+		Serial.print(beat_percentage);
+	}
+#endif
 
 	int fs = sizeof(palette_frame_t);
 	for (int y = 0; y < MATRIX_HEIGHT; y++) {
