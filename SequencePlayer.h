@@ -19,7 +19,7 @@ class SequencePlayer : public Player
 
 	 virtual void configure(void* d);
 	 virtual void beat();
-	 virtual byte* getFrame();
+	 virtual byte* getFrame(float beat_percentage);
 
  private:
 	 sequence_data_t* data;

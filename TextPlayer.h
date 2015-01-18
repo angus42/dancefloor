@@ -18,7 +18,7 @@ public:
 
 	virtual void configure(void* d);
 	virtual void beat();
-	virtual byte* getFrame();
+	virtual byte* getFrame(float beat_percentage);
 
 private:
 };

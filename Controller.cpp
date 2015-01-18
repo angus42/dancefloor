@@ -37,8 +37,11 @@ void Controller::loop() {
 		}
 	}
 
+	float beat_percentage = 1;
+
 	if (mode == BPM) {
-		if ((loop_start - last_beat_time) > beat_interval) {
+		uint32_t last_beat_elapsed = loop_start - last_beat_time;
+		if (last_beat_elapsed > beat_interval) {
 			beat_count++;
 			// calculate when beat actually should have happened
 			last_beat_time = last_beat_time + beat_interval;
@@ -46,6 +49,10 @@ void Controller::loop() {
 			if (last_beat_time < loop_start) {
 				last_beat_time = loop_start;
 			}
+		}
+		else
+		{
+			beat_percentage = (float)last_beat_elapsed / (float)beat_interval;
 		}
 	}
 
@@ -61,7 +68,7 @@ void Controller::loop() {
 		beatLedOn = !beatLedOn;
 	}
 
-	byte* frame = player->getFrame();
+	byte* frame = player->getFrame(beat_percentage);
 	if (frame == NULL) {
 		// program tells us that it is done
 		toggleProgram();

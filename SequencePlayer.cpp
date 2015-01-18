@@ -20,7 +20,7 @@ void SequencePlayer::beat() {
 #endif
 }
 
-byte* SequencePlayer::getFrame() {
+byte* SequencePlayer::getFrame(float beat_percentage) {
 	if (data->sequence == NULL)
 		return NULL;
 

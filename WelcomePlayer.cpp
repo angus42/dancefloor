@@ -14,7 +14,7 @@ void WelcomePlayer::configure(void* d) {
 void WelcomePlayer::beat() {
 }
 
-byte* WelcomePlayer::getFrame() {
+byte* WelcomePlayer::getFrame(float beat_percentage) {
 	if (get_frame_count >= (target_fps / 4)) {
 		// update 4 times per second
 		get_frame_count = 0;

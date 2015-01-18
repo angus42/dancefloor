@@ -14,7 +14,7 @@ class Player
  public:
 	virtual void configure(void* d) = 0;
 	virtual void beat() = 0;
-	virtual byte* getFrame() = 0;
+	virtual byte* getFrame(float beat_percentage) = 0;
 
  private:
 };

@@ -81,6 +81,9 @@
     <ClInclude Include="rot_drehend.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="black_and_white.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_WS2801.cpp">

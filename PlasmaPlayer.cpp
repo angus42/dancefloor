@@ -15,7 +15,7 @@ void PlasmaPlayer::beat() {
 	beat_frame_count = 0;
 }
 
-byte* PlasmaPlayer::getFrame() {
+byte* PlasmaPlayer::getFrame(float beat_percentage) {
 	frame_count++;
 	beat_frame_count++;
 

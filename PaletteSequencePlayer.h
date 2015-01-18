@@ -19,11 +19,15 @@ class PaletteSequencePlayer : public Player
 
 	 virtual void configure(void* d);
 	 virtual void beat();
-	 virtual byte* getFrame();
+	 virtual byte* getFrame(float beat_percentage);
 
  private:
 	 palette_sequence_data_t* data;
 	 uint8_t currentFrameIndex;
+	 byte* lastFrame;
+
+	 byte lookup(uint8_t index, uint8_t component_index);
+	 byte interpolate(uint8_t source_index, uint8_t target_index, float percentage, uint8_t component_index);
 };
 
 extern PaletteSequencePlayer paletteSequencePlayer;

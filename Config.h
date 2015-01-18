@@ -73,6 +73,7 @@ typedef struct palette_sequence_data {
 	byte *sequence;
 	byte frame_count;
 	byte *color_palette;
+	bool xfade;
 } palette_sequence_data_t;
 
 typedef struct text_data {

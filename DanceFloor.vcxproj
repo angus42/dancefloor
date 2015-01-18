@@ -84,6 +84,7 @@
     <ClInclude Include="alarm.h">
       <FileType>CppCode</FileType>
     </ClInclude>
+    <ClInclude Include="black_and_white.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="FrameRenderer.h" />

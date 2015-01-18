@@ -9,7 +9,7 @@ void TextPlayer::configure(void* d) {
 void TextPlayer::beat() {
 }
 
-byte* TextPlayer::getFrame() {
+byte* TextPlayer::getFrame(float beat_percentage) {
 	return NULL;
 }
 
