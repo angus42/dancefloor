@@ -8,7 +8,7 @@ was born.
 
 > Dedicated to Howy. Happy birthday to your 0x28th birthday.
 
-## What's is this
+## What is this
 
 The dance floor is a ca. 20 x 20 cm flat box with 25 full color RGB LEDs. It is controlled
 by an [Arduino] Uno microcontroller board. Programming the controller so that the lights
@@ -79,13 +79,41 @@ the next time the dance floor is turned on.
 
 ### Config.h
 
+This file contains of
+
++ hardware definition, that is which hardware is connected
+  to which I/Os and how big is the LED matrix.
++ timing related constants.
++ shared data types.
+
 ### DanceFloor.ino
+
+This is the main Ardu[ino] file. It contains of
+
++ the setup routine that sets up the hardware and registers an interrupt handler
+  for the microphone.
++ the main loop that does 
+  + poll the buttons and poti and calls the appropriate _Controller_ functions.
+  + call the _loop_ function of the _Controller_ for each frame.
+  + wait a calculated amount of milliseconds to maintain the target frame rate.
++ the mentioned interrupt handler that calls a _Controller_ function for each detected sound.
 
 ### Controller
 
+```
+// TODO
+```
+
 ### FrameRenderer
 
+This is a simple abstraction between the frame array of rgb values and the
+[Adafruit WS2801 library][WS2801 Lib]. It also does the rotation.
+
 ### Player.h
+
+```
+// TODO
+```
 
 ### PaletteSequencePlayer
 This player can play sequences that are stored as frames of indexes into a
@@ -94,6 +122,10 @@ The player can also interpolate between two frames (Crossfade).
 A sequence program must opt in for this.
 
 ### programs.h
+
+```
+// TODO
+```
 
 ## Palette sequences
 There is a side project for designing the sequences that can be found [here][Sequencer].
