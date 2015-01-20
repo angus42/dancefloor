@@ -29,6 +29,7 @@ class Controller
 	void toggleMode();
 	void toggleProgram();
 	void randomProgram();
+	void rotate();
 
 	bool beatLedOn;
 	bool modeLedOn;
@@ -46,6 +47,7 @@ class Controller
 	unsigned long last_beat_time;
 	unsigned long random_timer;
 
+	void reset();
 	void configureProgram();
 };
 

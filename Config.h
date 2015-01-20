@@ -15,6 +15,9 @@
 #define MATRIX_WIDTH 5
 #define MATRIX_HEIGHT 5
 
+// eeprom addresses for storing configuration
+#define EEPROM_ROTATION_ADDR 0
+
 // I/O
 //////
 
@@ -46,6 +49,14 @@ const uint16_t max_bpm = 1800; // we hardcode this, so scaling stays the same if
 
 // basic types
 //////////////
+
+typedef enum rotation {
+	R0 = 0,
+	R90 = 1,
+	R180 = 2,
+	R270 = 3,
+	R360 = 4
+} rotation_t;
 
 typedef byte frame_t[MATRIX_WIDTH * MATRIX_HEIGHT][3];
 

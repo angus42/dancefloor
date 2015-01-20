@@ -71,11 +71,13 @@ void soundTrigger();
 #include "C:\Users\angus\Source\Repos\dancefloor\alarm.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\black_and_white.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\curtain_with_a_smile.h"
+#include "C:\Users\angus\Source\Repos\dancefloor\dummy.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\fscale.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\jumping_blossom.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\pong.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\programs.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\rainbow_diag_top_to_bottom.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\rot_drehend.h"
+#include "C:\Users\angus\Source\Repos\dancefloor\this_side_up.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\walking_tripples.h"
 #endif

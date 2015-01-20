@@ -84,6 +84,12 @@
     <ClInclude Include="black_and_white.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="curtain_with_a_smile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="this_side_up.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_WS2801.cpp">

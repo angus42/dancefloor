@@ -1,3 +1,4 @@
+#include <avr/EEPROM.h>
 #include "Controller.h"
 #include "Config.h"
 #include "programs.h"
@@ -6,13 +7,10 @@
 Controller::Controller() {
 	matrix = new Adafruit_WS2801(MATRIX_WIDTH, MATRIX_HEIGHT, LED_MATRIX_DAT_PIN, LED_MATRIX_CLK_PIN, WS2801_RGB);
 	frameRenderer = new FrameRenderer(matrix);
+	// hope we do not get in trouble if initial value is not in enum range
+	frameRenderer->setRotation((rotation_t) eeprom_read_byte(EEPROM_ROTATION_ADDR));
 
-	beat_count = 0;
-	mode = BPM;
-	prog = 0;
-	beat_interval = 500; // 120 bpm = 2 bps = 500 ms
-	beatLedOn = LOW;
-	random_timer = 0;
+	reset();
 
 	init_programs();
 	configureProgram();
@@ -142,6 +140,29 @@ void Controller::randomProgram() {
 	double val = g.random();
 	random_timer = (int)round(val - g.mean + 10 * target_fps);
 	random_timer = constrain(random_timer, 1, 20 * target_fps);
+}
+
+void Controller::rotate() {
+	uint8_t r = eeprom_read_byte(EEPROM_ROTATION_ADDR);
+	r++;
+	if (r >= R360)
+		r = R0;
+	eeprom_write_byte(EEPROM_ROTATION_ADDR, r);
+
+	frameRenderer->setRotation((rotation_t)r);
+
+	reset();
+	configureProgram();
+}
+
+
+void Controller::reset() {
+	beat_count = 0;
+	mode = BPM;
+	prog = 0;
+	beat_interval = 500; // 120 bpm = 2 bps = 500 ms
+	beatLedOn = LOW;
+	random_timer = 0;
 }
 
 void Controller::configureProgram() {

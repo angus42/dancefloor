@@ -5,10 +5,11 @@
 #include "MemoryFree.h"
 
 unsigned long lastSoundTriggerMillis;
-unsigned long lastProgToggleButtonDownMillis;
-int lastSpeedPotiValue;
-int lastProgToggleButtonValue;
-int lastModeToggleButtonValue;
+unsigned long lastButtonDownMillis;
+uint16_t lastSpeedPotiValue;
+uint8_t lastProgToggleButtonValue;
+uint8_t lastModeToggleButtonValue;
+bool waitKeysUp;
 
 Controller controller;
 
@@ -33,19 +34,16 @@ void loop() {
 	// check for commands from serial port
 	if (Serial.available() > 0) {
 		char serial_char = Serial.read();
-		if (serial_char == 'p') {
-			controller.toggleProgram();
-		}
-		if (serial_char == 'r') {
-			controller.randomProgram();
-		}
-		if (serial_char == 'm') {
-			controller.toggleMode();
+		switch (serial_char) {
+		case 'p': controller.toggleProgram(); break;
+		case 'z': controller.randomProgram(); break;
+		case 'm': controller.toggleMode(); break;
+		case 'r': controller.rotate(); break;
 		}
 	}
 
 #ifndef _NO_HARDWARE
-	int speedPotiValue = analogRead(SPEED_POTI_PIN);
+	uint16_t speedPotiValue = analogRead(SPEED_POTI_PIN);
 	if (speedPotiValue != lastSpeedPotiValue) {
 		uint16_t bpm;
 		bpm = fscale(0, 1023, min_bpm, max_bpm, speedPotiValue, 0);
@@ -54,27 +52,44 @@ void loop() {
 
 	// buttons should be active high so a long press works as expected
 
-	int progToggleButtonValue = digitalRead(PROG_TOGGLE_BUTTON_PIN);
-	if (progToggleButtonValue == HIGH) {
-		if (lastProgToggleButtonValue == LOW) {
-			controller.toggleProgram();
-			lastProgToggleButtonDownMillis = millis();
-		}
-		else if ((millis() - lastProgToggleButtonDownMillis) > buttonDownMillis) {
-			randomSeed(micros());
-			controller.randomProgram();
-			lastProgToggleButtonDownMillis = millis();
-		}
-	}
-	lastProgToggleButtonValue = progToggleButtonValue;
+	uint8_t progToggleButtonValue = digitalRead(PROG_TOGGLE_BUTTON_PIN);
+	uint8_t modeToggleButtonValue = digitalRead(MODE_TOGGLE_BUTTON_PIN);
 
-	int modeToggleButtonValue = digitalRead(MODE_TOGGLE_BUTTON_PIN);
-	if (modeToggleButtonValue == HIGH) {
-		if (lastModeToggleButtonValue == LOW) {
-			controller.toggleMode();
+	if ((progToggleButtonValue == HIGH) || (modeToggleButtonValue == HIGH)) {
+		unsigned long currentMillis = millis();
+
+		if (progToggleButtonValue == HIGH) {
+			if (lastProgToggleButtonValue == LOW) {
+				lastButtonDownMillis = currentMillis;
+				controller.toggleProgram();
+			}
+			// waitKeysUp will prevent this code from beeing triggert multiple times after the first buttonDownMillis have elapsed
+			else if (!waitKeysUp && ((currentMillis - lastButtonDownMillis) > buttonDownMillis)) {
+				waitKeysUp = true;
+				if (modeToggleButtonValue == HIGH) {
+					controller.rotate();
+				}
+				else {
+					randomSeed(micros());
+					controller.randomProgram();
+				}
+			}
+		}
+
+		if (modeToggleButtonValue == HIGH) {
+			if (lastModeToggleButtonValue == LOW) {
+				lastButtonDownMillis = currentMillis;
+				controller.toggleMode();
+			}
 		}
 	}
+	else {
+		waitKeysUp = false;
+	}
+
+
 	lastModeToggleButtonValue = modeToggleButtonValue;
+	lastProgToggleButtonValue = progToggleButtonValue;
 #endif
 
 	controller.loop();
@@ -83,8 +98,7 @@ void loop() {
 	digitalWrite(MODE_LED_PIN, controller.modeLedOn);
 }
 
-void soundTrigger()
-{
+void soundTrigger() {
 	unsigned long currentMillis = millis();
 	if ((currentMillis - lastSoundTriggerMillis) >= minSoundTriggerMillis)
 	{
