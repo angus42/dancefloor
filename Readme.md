@@ -2,8 +2,8 @@
 
 ## Acknowledgment
 
-This project startet of as a birthday gift for a good friend. He is fond of colorful
-blinking lights. As he called for a 70s disco birthay party, the idea for this project
+This project started of as a birthday gift for a good friend. He is fond of colorful
+blinking lights. As he called for a 70s disco birthday party, the idea for this project
 was born.
 
 > Dedicated to Howy. Happy birthday to your 0x28th birthday.
@@ -11,7 +11,7 @@ was born.
 ## What's is this
 
 The dance floor is a ca. 20 x 20 cm flat box with 25 full color RGB LEDs. It is controlled
-by an [Arduino] Uno microcontroller board. Programing the controller so the lights
+by an [Arduino] Uno microcontroller board. Programming the controller so that the lights
 light up in a useful manner is all the fun of the project. For now it can play
 sequences of frames that change to the rhythm of music or at a adjustable bpm
 (beats per minute) rate.
@@ -23,7 +23,13 @@ sequences of frames that change to the rhythm of music or at a adjustable bpm
 At startup a fixed welcome text is played. It can be skipped by pressing the *PROG*
 button.
 
-## Swithing programs
+## Plugs and controls
+
+On one side there is the power plug and the USB plug.
+On the other side there is the (blue) *PROG* button, the (red) *MODE* button
+and a *SPEED* poti knob.
+
+## Switching programs
 
 A program is usually a sequence of frames that repeats over and over. You can
 toggle programs by pressing the *PROG* button.
@@ -32,7 +38,7 @@ toggle programs by pressing the *PROG* button.
 
 A long press on the *PROG* button will switch to random mode.
 The program will change automatically after a random amount of seconds between
-1 and 20. The time is normal distributed. The next program is also choosen
+1 and 20. The time is normal distributed. The next program is also chosen
 randomly (welcome program excluded).
 
 
@@ -40,22 +46,32 @@ Another press of the *PROG* button will leave the random mode with the last prog
 staying active.
 
 ## Sound to light mode
-Pressing th *MODE* button will switch between _Sound to light_ and _Beats per minute_ mode.
+
+Pressing the *MODE* button will switch between _Sound to light_ and _Beats per minute_ mode.
 _Sound to light_ mode is active then the control LED is on.
-In this mode, the build in microphone will trigger the frame change, when a certain
-volumn is exceeded. The maximum possible rate of frame changes is cut of at 300 bpm.
+In this mode, the built-in microphone will trigger the frame change, when a certain
+volume is exceeded. The maximum possible rate of frame changes is cut of at 300 bpm.
 
 > In this hardware release the sensitivity can only be adjusted by a small extra poti.
-To adjust the sensitivity, change the volumn of the music or move the dance floor
+To adjust the sensitivity, change the volume of the music or move the dance floor
 away from it (especially the microphone).
 
 ## Beats per minute mode
-Pressing th *MODE* button will switch between _Sound to light_ and _Beats per minute_ mode.
+
+Pressing the *MODE* button will switch between _Sound to light_ and _Beats per minute_ mode.
 _Beats per minute_ mode is active then the control LED is off.
 In this mode the *SPEED* poti allows you to select a value between 1 and 1800
 beats per minute. The last value is equal to 30 frame changes per second.
 
-In this mode A poti to adjust the speed in normal mode (or sensitivity in Sount-to-Light mode).
+## Rotation
+
+The patterns on the matrix can be rotated in 90 degree angles. This might be useful
+if the dance floor is hung on the wall in a certain orientation. Pressing both the
+*MODE* and *PROG* button for one second will change the rotation by one 90 degree
+step clockwise. The welcome text will start again to visualize the new orientation.
+To rotate another 90 degrees, both buttons must be released and pressed again
+for another second. The current orientation is persisted and will be restored
+the next time the dance floor is turned on.
 
 # Implementation
 
@@ -74,29 +90,24 @@ In this mode A poti to adjust the speed in normal mode (or sensitivity in Sount-
 ### PaletteSequencePlayer
 This player can play sequences that are stored as frames of indexes into a
 palette array that stores the used colors.
+The player can also interpolate between two frames (Crossfade).
+A sequence program must opt in for this.
 
 ### programs.h
 
 ## Palette sequences
 There is a side project for designing the sequences that can be found [here][Sequencer].
 It stores the sequences as a JSON file.
-The SequencePalletizer tool parses these files and generates a header file with
-a palette and sequence C array from it. A powershell script does this for all
+The _SequencePalletizer_ tool parses these files and generates a header file with
+a palette and sequence C array from it. A PowerShell script does this for all
 sequences in the _Sequences_ folder. The header files must then only be incorporated
 in the _progams.h_.
 
-## Backlog
+# Backlog
 
-### Frame Interpolation
-Helper function to interpolate between two frames (Crossfade).
-A sequence program must opt in for this.
-
-### Sound-to-Light sensitivity
-
-This is not supported in the current hardware version.
-
-### MISC
-LED (Blue) and button for future extension...
+## TextPlayer
+A player that can render any text. Text may be send via serial interface and persisted
+in the internal eeprom.
 
 # License
 
@@ -113,7 +124,7 @@ The DanceFloor project is released under the [MIT License][opensource].
 [Gaussian distribution class by Ivan Seidel Gomes][Gaussian]
 
 [Sequencer]: https://github.com/angus42/dancefloor-sequencer
-[Arduino Due]: http://www.arduino.cc/
+[Arduino]: http://www.arduino.cc/
 [fscale]: http://playground.arduino.cc/Main/Fscale
 [WS2801 Lib]: https://github.com/adafruit/Adafruit-WS2801-Library
 [Plasma]: http://www.bidouille.org/prog/plasma
