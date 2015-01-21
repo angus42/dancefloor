@@ -93,4 +93,4 @@ const PROGMEM color_palette_t rot_drehend_palette = {
   { 0xa7, 0x00, 0x00 }, 
   { 0xff, 0x00, 0x00 }};
 
-const palette_sequence_data_t rot_drehend_program = { (byte*)&rot_drehend_sequence, 12, (byte*)&rot_drehend_palette };
+const palette_sequence_data_t rot_drehend_program = { (byte*)&rot_drehend_sequence, 12, (byte*)&rot_drehend_palette, false };

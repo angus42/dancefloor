@@ -445,4 +445,4 @@ const PROGMEM color_palette_t curtain_with_a_smile_palette = {
   { 0x00, 0x00, 0x00 }, 
   { 0xff, 0xff, 0xff }};
 
-const palette_sequence_data_t curtain_with_a_smile_program = { (byte*)&curtain_with_a_smile_sequence, 60, (byte*)&curtain_with_a_smile_palette };
+const palette_sequence_data_t curtain_with_a_smile_program = { (byte*)&curtain_with_a_smile_sequence, 60, (byte*)&curtain_with_a_smile_palette, false };

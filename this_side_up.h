@@ -17,4 +17,4 @@ const PROGMEM color_palette_t this_side_up_palette = {
   { 0xff, 0x00, 0xff }, 
   { 0xff, 0x00, 0x00 }};
 
-const palette_sequence_data_t this_side_up_program = { (byte*)&this_side_up_sequence, 1, (byte*)&this_side_up_palette };
+const palette_sequence_data_t this_side_up_program = { (byte*)&this_side_up_sequence, 1, (byte*)&this_side_up_palette, false };

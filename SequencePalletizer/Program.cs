@@ -11,6 +11,7 @@ namespace SequencePalletizer
         static void Main(string[] args)
         {
             string name = null;
+            bool xfade = false;
             int frame_count = 0;
             var color_palette = new List<Color>();
             var headerFilePath = Path.ChangeExtension(args[0], ".h");
@@ -23,6 +24,7 @@ namespace SequencePalletizer
                 {
                     dynamic root = (JObject)JToken.ReadFrom(sequencerFileReader);
                     name = root.name;
+                    xfade = root.xfade ?? false;
                     headerFile.WriteLine("#include \"Config.h\"");
                     headerFile.WriteLine();
                     headerFile.WriteLine("const PROGMEM palette_sequence_t {0}_sequence = {{", name);
@@ -80,7 +82,7 @@ namespace SequencePalletizer
                 }
                 headerFile.WriteLine("};");
                 headerFile.WriteLine();
-                headerFile.WriteLine("const palette_sequence_data_t {0}_program = {{ (byte*)&{0}_sequence, {1}, (byte*)&{0}_palette }};", name, frame_count);
+                headerFile.WriteLine("const palette_sequence_data_t {0}_program = {{ (byte*)&{0}_sequence, {1}, (byte*)&{0}_palette, {2} }};", name, frame_count, xfade ? "true" : "false");
             }
         }
     }

@@ -63,4 +63,4 @@ const PROGMEM color_palette_t pong_palette = {
   { 0x15, 0x98, 0x00 }, 
   { 0xff, 0x00, 0x00 }};
 
-const palette_sequence_data_t pong_program = { (byte*)&pong_sequence, 8, (byte*)&pong_palette };
+const palette_sequence_data_t pong_program = { (byte*)&pong_sequence, 8, (byte*)&pong_palette, false };

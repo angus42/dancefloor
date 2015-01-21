@@ -105,4 +105,4 @@ const PROGMEM color_palette_t walking_tripples_palette = {
   { 0x21, 0x43, 0x01 }, 
   { 0x3f, 0x1e, 0x03 }};
 
-const palette_sequence_data_t walking_tripples_program = { (byte*)&walking_tripples_sequence, 12, (byte*)&walking_tripples_palette };
+const palette_sequence_data_t walking_tripples_program = { (byte*)&walking_tripples_sequence, 12, (byte*)&walking_tripples_palette, false };

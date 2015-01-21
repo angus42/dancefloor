@@ -68,4 +68,4 @@ const PROGMEM color_palette_t rainbow_diag_top_to_bottom_palette = {
   { 0x27, 0x00, 0xff }, 
   { 0xff, 0x00, 0xea }};
 
-const palette_sequence_data_t rainbow_diag_top_to_bottom_program = { (byte*)&rainbow_diag_top_to_bottom_sequence, 8, (byte*)&rainbow_diag_top_to_bottom_palette };
+const palette_sequence_data_t rainbow_diag_top_to_bottom_program = { (byte*)&rainbow_diag_top_to_bottom_sequence, 8, (byte*)&rainbow_diag_top_to_bottom_palette, true };

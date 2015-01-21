@@ -44,4 +44,4 @@ const PROGMEM color_palette_t alarm_palette = {
   { 0x0d, 0xff, 0x00 }, 
   { 0xff, 0x00, 0x00 }};
 
-const palette_sequence_data_t alarm_program = { (byte*)&alarm_sequence, 5, (byte*)&alarm_palette };
+const palette_sequence_data_t alarm_program = { (byte*)&alarm_sequence, 5, (byte*)&alarm_palette, false };

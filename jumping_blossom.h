@@ -69,4 +69,4 @@ const PROGMEM color_palette_t jumping_blossom_palette = {
   { 0x73, 0x04, 0x85 }, 
   { 0x03, 0xe3, 0x9f }};
 
-const palette_sequence_data_t jumping_blossom_program = { (byte*)&jumping_blossom_sequence, 8, (byte*)&jumping_blossom_palette };
+const palette_sequence_data_t jumping_blossom_program = { (byte*)&jumping_blossom_sequence, 8, (byte*)&jumping_blossom_palette, false };
