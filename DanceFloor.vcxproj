@@ -110,6 +110,7 @@
       <FileType>CppCode</FileType>
     </ClInclude>
     <ClInclude Include="S.h" />
+    <ClInclude Include="secret_message.h" />
     <ClInclude Include="SequencePlayer.h" />
     <ClInclude Include="programs.h" />
     <ClInclude Include="TextPlayer.h" />

@@ -82,6 +82,7 @@ void soundTrigger();
 #include "C:\Users\angus\Source\Repos\dancefloor\programs.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\rainbow_diag_top_to_bottom.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\rot_drehend.h"
+#include "C:\Users\angus\Source\Repos\dancefloor\secret_message.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\this_side_up.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\walking_tripples.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\wild_at_heart.h"
