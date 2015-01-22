@@ -12,6 +12,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DanceFloor", "DanceFloor.vc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SequencePalletizer", "SequencePalletizer\SequencePalletizer.csproj", "{AA319866-C8F7-47C3-968D-20876C35EDF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphabetCompiler", "AlphabetCompiler\AlphabetCompiler.csproj", "{B03FE3FF-ED70-4373-AE91-B726E60049B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,16 @@ Global
 		{AA319866-C8F7-47C3-968D-20876C35EDF3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{AA319866-C8F7-47C3-968D-20876C35EDF3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{AA319866-C8F7-47C3-968D-20876C35EDF3}.Release|Win32.ActiveCfg = Release|Any CPU
+		{B03FE3FF-ED70-4373-AE91-B726E60049B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B03FE3FF-ED70-4373-AE91-B726E60049B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B03FE3FF-ED70-4373-AE91-B726E60049B7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B03FE3FF-ED70-4373-AE91-B726E60049B7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B03FE3FF-ED70-4373-AE91-B726E60049B7}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{B03FE3FF-ED70-4373-AE91-B726E60049B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B03FE3FF-ED70-4373-AE91-B726E60049B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B03FE3FF-ED70-4373-AE91-B726E60049B7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B03FE3FF-ED70-4373-AE91-B726E60049B7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B03FE3FF-ED70-4373-AE91-B726E60049B7}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
