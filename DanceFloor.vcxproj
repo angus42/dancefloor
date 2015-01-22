@@ -93,6 +93,7 @@
     <ClInclude Include="FrameRenderer.h" />
     <ClInclude Include="fscale.h" />
     <ClInclude Include="Gaussian.h" />
+    <ClInclude Include="inversion_of_ctrl.h" />
     <ClInclude Include="jumping_blossom.h" />
     <ClInclude Include="MemoryFree.h">
       <FileType>CppCode</FileType>
@@ -107,6 +108,7 @@
     <ClInclude Include="rot_drehend.h">
       <FileType>CppCode</FileType>
     </ClInclude>
+    <ClInclude Include="S.h" />
     <ClInclude Include="SequencePlayer.h" />
     <ClInclude Include="programs.h" />
     <ClInclude Include="TextPlayer.h" />
@@ -114,6 +116,7 @@
     <ClInclude Include="Visual Micro\.DanceFloor.vsarduino.h" />
     <ClInclude Include="walking_tripples.h" />
     <ClInclude Include="WelcomePlayer.h" />
+    <ClInclude Include="wild_at_heart.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_WS2801.cpp" />

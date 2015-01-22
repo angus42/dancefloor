@@ -90,6 +90,15 @@
     <ClInclude Include="this_side_up.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="inversion_of_ctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="S.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="wild_at_heart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_WS2801.cpp">
