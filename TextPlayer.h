@@ -21,7 +21,11 @@ public:
 	virtual byte* getFrame(float beat_percentage);
 
 private:
+	byte index;
+	byte offset;
 };
+
+extern TextPlayer textPlayer;
 
 #endif
 
