@@ -2,6 +2,7 @@
 
 #include "WelcomePlayer.h"
 #include "PaletteSequencePlayer.h"
+#include "TextPlayer.h"
 
 #include "alarm.h"
 #include "black_and_white.h"
@@ -16,7 +17,7 @@
 #include "S.h"
 #include "secret_message.h"
 
-static program_data_t programs[13];
+static program_data_t programs[14];
 
 void init_programs() {
 	programs[0] = (program_data_t) { &welcomePlayer, NULL };
@@ -32,5 +33,6 @@ void init_programs() {
 	programs[10] = (program_data_t) { &paletteSequencePlayer, (void*)&S_program };
 	programs[11] = (program_data_t) { &paletteSequencePlayer, (void*)&secret_message_program };
 	programs[12] = (program_data_t) { &paletteSequencePlayer, (void*)&black_and_white_program };
+	programs[13] = (program_data_t) { &textPlayer, NULL };
 }
 

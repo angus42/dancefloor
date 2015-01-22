@@ -1,3 +1,4 @@
+#include <avr/EEPROM.h>
 #include <SPI.h>
 #include "Controller.h"
 #include "Config.h"
@@ -10,6 +11,8 @@ uint16_t lastSpeedPotiValue;
 uint8_t lastProgToggleButtonValue;
 uint8_t lastModeToggleButtonValue;
 bool waitKeysUp;
+bool receivingTextMessage;
+byte textMessageIndex;
 
 Controller controller;
 
@@ -32,13 +35,38 @@ void setup() {
 
 void loop() {
 	// check for commands from serial port
-	if (Serial.available() > 0) {
+	while (Serial.available() > 0) {
 		char serial_char = Serial.read();
-		switch (serial_char) {
-		case 'p': controller.toggleProgram(); break;
-		case 'z': controller.randomProgram(); break;
-		case 'm': controller.toggleMode(); break;
-		case 'r': controller.rotate(); break;
+		if (receivingTextMessage) {
+			// wait for ~ or maximum message size
+			if ((serial_char != 0x7e) && (textMessageIndex < EEPROM_TEXT_MESSAGE_SIZE)) {
+				eeprom_write_byte((uint8_t*)EEPROM_TEXT_MESSAGE_ADDR + textMessageIndex, serial_char);
+				textMessageIndex++;
+			}
+			else {
+				eeprom_write_byte((uint8_t*)EEPROM_TEXT_MESSAGE_ADDR + textMessageIndex, 0x00);
+				receivingTextMessage = false;
+
+				// echo the new message text
+				textMessageIndex = 0;
+				while (true) {
+					char c = eeprom_read_byte((uint8_t*)EEPROM_TEXT_MESSAGE_ADDR + textMessageIndex);
+					if (c == 0x00)
+						break;
+					Serial.print(c);
+					textMessageIndex++;
+				}
+				Serial.println();
+			}
+		}
+		else {
+			switch (serial_char) {
+			case 'p': controller.toggleProgram(); break;
+			case 'z': controller.randomProgram(); break;
+			case 'm': controller.toggleMode(); break;
+			case 'r': controller.rotate(); break;
+			case 't': receivingTextMessage = true; textMessageIndex = 0; break;
+			}
 		}
 	}
 

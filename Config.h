@@ -17,6 +17,8 @@
 
 // eeprom addresses for storing configuration
 #define EEPROM_ROTATION_ADDR 0
+#define EEPROM_TEXT_MESSAGE_ADDR 100
+#define EEPROM_TEXT_MESSAGE_SIZE 144
 
 // I/O
 //////

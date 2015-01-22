@@ -1,17 +1,14 @@
+#include <avr/EEPROM.h>
 #include "Alphabet.h"
 #include "Config.h"
 #include "TextPlayer.h"
-
-const PROGMEM char text_player_text[] = "HALLO WÜLT.|\0";
 
 TextPlayer::TextPlayer() {
 }
 
 void TextPlayer::configure(void* d) {
 	index = 0;
-	offset = 0;
-
-	
+	offset = 0;	
 }
 
 void TextPlayer::beat() {
@@ -19,12 +16,12 @@ void TextPlayer::beat() {
 	if (offset > MATRIX_WIDTH) { // should be CHAR_WIDTH
 		offset = 0;
 		index++;
-		if (pgm_read_byte(text_player_text + index) == 0)
+		if (eeprom_read_byte((uint8_t*)EEPROM_TEXT_MESSAGE_ADDR + index) == 0x00)
 			index = 0;
 	}
 
 //#ifdef _DEBUG
-//	char c = pgm_read_byte(text_player_text + index);
+//	char c = eeprom_read_byte((uint8_t*)EEPROM_TEXT_MESSAGE_ADDR + index);
 //	Serial.println();
 //	Serial.print(c);
 //	Serial.print("-");
@@ -40,7 +37,7 @@ byte* TextPlayer::getFrame(float beat_percentage) {
 		byte stripe = 0;
 		if (o < MATRIX_WIDTH)
 		{
-			char c = pgm_read_byte(text_player_text + i);
+			char c = eeprom_read_byte((uint8_t*)EEPROM_TEXT_MESSAGE_ADDR + i);
 			// Windows-1252 / ISO-8859-1
 			// 0x60 ` = Ä => 0xC4
 			// 0x61 a = Ö => 0xD6
@@ -73,7 +70,7 @@ byte* TextPlayer::getFrame(float beat_percentage) {
 		if (o > MATRIX_WIDTH) { // should be CHAR_WIDTH
 			o = 0;
 			i++;
-			if (pgm_read_byte((prog_void*)text_player_text[i]) == 0)
+			if (eeprom_read_byte((uint8_t*)EEPROM_TEXT_MESSAGE_ADDR + i) == 0x00)
 				i = 0;
 		}
 	}
