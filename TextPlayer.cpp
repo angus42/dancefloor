@@ -1,4 +1,5 @@
 #include "TextPlayer.h"
+#include "Alphabet.h"
 
 TextPlayer::TextPlayer() {
 }

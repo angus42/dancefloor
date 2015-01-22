@@ -22,7 +22,8 @@ namespace AlphabetCompiler
                 using (var sequencerFileReader = new JsonTextReader(sequencerFile))
                 {
                     dynamic root = (JObject)JToken.ReadFrom(sequencerFileReader);
-                    headerFile.WriteLine("const PROGMEM byte alphabet[][] = {{");
+                    // FIXME: hacked in number of pixel per row (= stripes)
+                    headerFile.WriteLine("const PROGMEM byte alphabet[][5] = {");
                     var firstStep = true;
                     byte asciiChar = 32 - 1;
                     foreach (var step in root.steps)
@@ -44,6 +45,7 @@ namespace AlphabetCompiler
                                 headerFile.WriteLine(", ");
                             else
                                 firstStripe = false;
+                            headerFile.Write("  0b");
                             // we rotate each letter 90° clockwise.
                             // this gives us vertical stripes of the letters with the LSB beeing the uppermost pixel.
                             // rows become the bits in the stripe.
@@ -62,7 +64,6 @@ namespace AlphabetCompiler
                                     headerFile.Write(c.GetBrightness() < 0.5 ? "0" : "1");
                                 }
                             }
-                            headerFile.Write("b");
                             stripe++;
                             if (step.frame[0].Count <= stripe)
                             {

@@ -99,6 +99,9 @@
     <ClInclude Include="wild_at_heart.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Alphabet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_WS2801.cpp">
