@@ -23,6 +23,9 @@ public:
 private:
 	byte index;
 	byte offset;
+	char* message;
+
+	char read(byte i);
 };
 
 extern TextPlayer textPlayer;

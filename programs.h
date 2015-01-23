@@ -1,6 +1,6 @@
 #include "Config.h"
 
-#include "WelcomePlayer.h"
+// #include "WelcomePlayer.h"
 #include "PaletteSequencePlayer.h"
 #include "TextPlayer.h"
 
@@ -20,8 +20,11 @@
 
 static program_data_t programs[15];
 
+const PROGMEM char welcome_text[] = "HALLO HOWY \xA9 \x00";
+
 void init_programs() {
-	programs[0] = (program_data_t) { &welcomePlayer, NULL };
+	// programs[0] = (program_data_t) { &welcomePlayer, NULL };
+	programs[0] = (program_data_t) { &textPlayer, (void*)&welcome_text };
 	programs[1] = (program_data_t) { &paletteSequencePlayer, (void*)&alarm_program };
 	programs[2] = (program_data_t) { &paletteSequencePlayer, (void*)&curtain_with_a_smile_program };
 	programs[3] = (program_data_t) { &paletteSequencePlayer, (void*)&inversion_of_ctrl_program };
