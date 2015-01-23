@@ -108,6 +108,12 @@
     <ClInclude Include="maiwald.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="wurm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hofrat_keller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_WS2801.cpp">

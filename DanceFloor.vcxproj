@@ -94,6 +94,7 @@
     <ClInclude Include="FrameRenderer.h" />
     <ClInclude Include="fscale.h" />
     <ClInclude Include="Gaussian.h" />
+    <ClInclude Include="hofrat_keller.h" />
     <ClInclude Include="inversion_of_ctrl.h" />
     <ClInclude Include="jumping_blossom.h" />
     <ClInclude Include="maiwald.h">
@@ -122,6 +123,7 @@
     <ClInclude Include="walking_tripples.h" />
     <ClInclude Include="WelcomePlayer.h" />
     <ClInclude Include="wild_at_heart.h" />
+    <ClInclude Include="wurm.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_WS2801.cpp" />
