@@ -72,6 +72,7 @@ void soundTrigger();
 #include "C:\Users\angus\Source\Repos\dancefloor\WelcomePlayer.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\alarm.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\black_and_white.h"
+#include "C:\Users\angus\Source\Repos\dancefloor\blinky_pinky_inky.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\curtain_with_a_smile.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\fscale.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\hofrat_keller.h"

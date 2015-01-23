@@ -6,6 +6,7 @@
 
 #include "alarm.h"
 #include "black_and_white.h"
+#include "blinky_pinky_inky.h"
 #include "curtain_with_a_smile.h"
 #include "hofrat_keller.h"
 #include "inversion_of_ctrl.h"
@@ -14,13 +15,13 @@
 #include "pong.h"
 #include "rainbow_diag_top_to_bottom.h"
 #include "rot_drehend.h"
-#include "walking_tripples.h"
-#include "wild_at_heart.h"
 #include "S.h"
 #include "secret_message.h"
+#include "walking_tripples.h"
+#include "wild_at_heart.h"
 #include "wurm.h"
 
-static program_data_t programs[17];
+static program_data_t programs[18];
 
 // const PROGMEM char welcome_text[] = "HALLO HOWY \xA9 \x00";
 
@@ -40,7 +41,8 @@ void init_programs() {
 	programs[12] = (program_data_t) { &paletteSequencePlayer, (void*)&secret_message_program };
 	programs[13] = (program_data_t) { &paletteSequencePlayer, (void*)&maiwald_program };
 	programs[14] = (program_data_t) { &paletteSequencePlayer, (void*)&wurm_program };
-	programs[15] = (program_data_t) { &paletteSequencePlayer, (void*)&black_and_white_program };
-	programs[16] = (program_data_t) { &textPlayer, NULL };
+	programs[15] = (program_data_t) { &paletteSequencePlayer, (void*)&blinky_pinky_inky_program };
+	programs[16] = (program_data_t) { &paletteSequencePlayer, (void*)&black_and_white_program };
+	programs[17] = (program_data_t) { &textPlayer, NULL };
 }
 

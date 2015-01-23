@@ -86,6 +86,7 @@
     </ClInclude>
     <ClInclude Include="Alphabet.h" />
     <ClInclude Include="black_and_white.h" />
+    <ClInclude Include="blinky_pinky_inky.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="curtain_with_a_smile.h">
