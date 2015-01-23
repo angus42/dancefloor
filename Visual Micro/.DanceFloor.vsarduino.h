@@ -76,6 +76,7 @@ void soundTrigger();
 #include "C:\Users\angus\Source\Repos\dancefloor\fscale.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\inversion_of_ctrl.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\jumping_blossom.h"
+#include "C:\Users\angus\Source\Repos\dancefloor\maiwald.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\pong.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\programs.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\rainbow_diag_top_to_bottom.h"

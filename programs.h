@@ -9,6 +9,7 @@
 #include "curtain_with_a_smile.h"
 #include "inversion_of_ctrl.h"
 #include "jumping_blossom.h"
+#include "maiwald.h"
 #include "pong.h"
 #include "rainbow_diag_top_to_bottom.h"
 #include "rot_drehend.h"
@@ -17,7 +18,7 @@
 #include "S.h"
 #include "secret_message.h"
 
-static program_data_t programs[14];
+static program_data_t programs[15];
 
 void init_programs() {
 	programs[0] = (program_data_t) { &welcomePlayer, NULL };
@@ -32,7 +33,8 @@ void init_programs() {
 	programs[9] = (program_data_t) { &paletteSequencePlayer, (void*)&wild_at_heart_program };
 	programs[10] = (program_data_t) { &paletteSequencePlayer, (void*)&S_program };
 	programs[11] = (program_data_t) { &paletteSequencePlayer, (void*)&secret_message_program };
-	programs[12] = (program_data_t) { &paletteSequencePlayer, (void*)&black_and_white_program };
-	programs[13] = (program_data_t) { &textPlayer, NULL };
+	programs[12] = (program_data_t) { &paletteSequencePlayer, (void*)&maiwald_program };
+	programs[13] = (program_data_t) { &paletteSequencePlayer, (void*)&black_and_white_program };
+	programs[14] = (program_data_t) { &textPlayer, NULL };
 }
 

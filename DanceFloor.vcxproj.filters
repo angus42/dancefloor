@@ -105,6 +105,9 @@
     <ClInclude Include="secret_message.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="maiwald.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_WS2801.cpp">

@@ -96,6 +96,9 @@
     <ClInclude Include="Gaussian.h" />
     <ClInclude Include="inversion_of_ctrl.h" />
     <ClInclude Include="jumping_blossom.h" />
+    <ClInclude Include="maiwald.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
     <ClInclude Include="MemoryFree.h">
       <FileType>CppCode</FileType>
     </ClInclude>
