@@ -74,6 +74,7 @@ void soundTrigger();
 #include "C:\Users\angus\Source\Repos\dancefloor\black_and_white.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\curtain_with_a_smile.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\fscale.h"
+#include "C:\Users\angus\Source\Repos\dancefloor\hofrat_keller.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\inversion_of_ctrl.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\jumping_blossom.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\maiwald.h"
@@ -85,4 +86,5 @@ void soundTrigger();
 #include "C:\Users\angus\Source\Repos\dancefloor\this_side_up.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\walking_tripples.h"
 #include "C:\Users\angus\Source\Repos\dancefloor\wild_at_heart.h"
+#include "C:\Users\angus\Source\Repos\dancefloor\wurm.h"
 #endif

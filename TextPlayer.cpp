@@ -52,7 +52,7 @@ byte* TextPlayer::getFrame(float beat_percentage) {
 			bool pixel = stripe & (1 << y);
 			shared_frame[p][0] = pixel ? 63 * y : 0;
 			shared_frame[p][1] = pixel ? 255 - (63 * y) : 0;
-			shared_frame[p][2] = pixel ? ((i * (MATRIX_WIDTH + 1) + o + x) * 4) / 256 : 15;
+			shared_frame[p][2] = pixel ? ((i * MATRIX_WIDTH + o + x) * 2) % 256 : 15;
 		}
 
 		// same as beat() but frame local
