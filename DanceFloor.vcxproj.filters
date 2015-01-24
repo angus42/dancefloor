@@ -138,6 +138,9 @@
     <ClInclude Include="spirale.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="saterday_night_fever.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_WS2801.cpp">

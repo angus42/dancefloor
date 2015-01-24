@@ -121,6 +121,7 @@
       <FileType>CppCode</FileType>
     </ClInclude>
     <ClInclude Include="S.h" />
+    <ClInclude Include="saterday_night_fever.h" />
     <ClInclude Include="secret_message.h" />
     <ClInclude Include="SequencePlayer.h" />
     <ClInclude Include="programs.h" />

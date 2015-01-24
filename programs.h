@@ -22,13 +22,14 @@
 #include "rainbow_diag_top_to_bottom.h"
 #include "rot_drehend.h"
 #include "S.h"
+#include "saterday_night_fever.h"
 #include "secret_message.h"
 #include "spirale.h"
 #include "walking_tripples.h"
 #include "wild_at_heart.h"
 #include "wurm.h"
 
-static program_data_t programs[25];
+static program_data_t programs[26];
 
 // const PROGMEM char welcome_text[] = "HALLO HOWY \xA9 \x00";
 
@@ -56,7 +57,8 @@ void init_programs() {
 	programs[20] = (program_data_t) { &paletteSequencePlayer, (void*)&game_palette };
 	programs[21] = (program_data_t) { &paletteSequencePlayer, (void*)&heart_palette };
 	programs[22] = (program_data_t) { &paletteSequencePlayer, (void*)&spirale_palette };
-	programs[23] = (program_data_t) { &paletteSequencePlayer, (void*)&black_and_white_program };
-	programs[24] = (program_data_t) { &textPlayer, NULL };
+	programs[23] = (program_data_t) { &paletteSequencePlayer, (void*)&saterday_night_fever_palette };
+	programs[24] = (program_data_t) { &paletteSequencePlayer, (void*)&black_and_white_program };
+	programs[25] = (program_data_t) { &textPlayer, NULL };
 }
 
