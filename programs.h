@@ -52,12 +52,12 @@ void init_programs() {
 	programs[15] = (program_data_t) { &paletteSequencePlayer, (void*)&blinky_pinky_inky_program };
 	programs[16] = (program_data_t) { &paletteSequencePlayer, (void*)&double_spinner_program };
 	programs[17] = (program_data_t) { &paletteSequencePlayer, (void*)&flashing_yellow_clockwork_program };
-	programs[18] = (program_data_t) { &paletteSequencePlayer, (void*)&chess_palette };
-	programs[19] = (program_data_t) { &paletteSequencePlayer, (void*)&colors_palette };
-	programs[20] = (program_data_t) { &paletteSequencePlayer, (void*)&game_palette };
-	programs[21] = (program_data_t) { &paletteSequencePlayer, (void*)&heart_palette };
-	programs[22] = (program_data_t) { &paletteSequencePlayer, (void*)&spirale_palette };
-	programs[23] = (program_data_t) { &paletteSequencePlayer, (void*)&saterday_night_fever_palette };
+	programs[18] = (program_data_t) { &paletteSequencePlayer, (void*)&chess_program };
+	programs[19] = (program_data_t) { &paletteSequencePlayer, (void*)&colors_program };
+	programs[20] = (program_data_t) { &paletteSequencePlayer, (void*)&game_program };
+	programs[21] = (program_data_t) { &paletteSequencePlayer, (void*)&heart_program };
+	programs[22] = (program_data_t) { &paletteSequencePlayer, (void*)&spirale_program };
+	programs[23] = (program_data_t) { &paletteSequencePlayer, (void*)&saterday_night_fever_program };
 	programs[24] = (program_data_t) { &paletteSequencePlayer, (void*)&black_and_white_program };
 	programs[25] = (program_data_t) { &textPlayer, NULL };
 }
