@@ -87,6 +87,8 @@
     <ClInclude Include="Alphabet.h" />
     <ClInclude Include="black_and_white.h" />
     <ClInclude Include="blinky_pinky_inky.h" />
+    <ClInclude Include="chess.h" />
+    <ClInclude Include="colors.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="curtain_with_a_smile.h">
@@ -96,7 +98,9 @@
     <ClInclude Include="flashing_yellow_clockwork.h" />
     <ClInclude Include="FrameRenderer.h" />
     <ClInclude Include="fscale.h" />
+    <ClInclude Include="game.h" />
     <ClInclude Include="Gaussian.h" />
+    <ClInclude Include="heart.h" />
     <ClInclude Include="hofrat_keller.h" />
     <ClInclude Include="inversion_of_ctrl.h" />
     <ClInclude Include="jumping_blossom.h" />
@@ -120,6 +124,7 @@
     <ClInclude Include="secret_message.h" />
     <ClInclude Include="SequencePlayer.h" />
     <ClInclude Include="programs.h" />
+    <ClInclude Include="spirale.h" />
     <ClInclude Include="TextPlayer.h" />
     <ClInclude Include="this_side_up.h" />
     <ClInclude Include="Visual Micro\.DanceFloor.vsarduino.h" />

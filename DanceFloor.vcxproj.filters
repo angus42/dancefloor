@@ -123,6 +123,21 @@
     <ClInclude Include="flashing_yellow_clockwork.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="chess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="colors.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="heart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="spirale.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_WS2801.cpp">

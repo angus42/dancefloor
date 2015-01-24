@@ -7,9 +7,13 @@
 #include "alarm.h"
 #include "black_and_white.h"
 #include "blinky_pinky_inky.h"
+#include "chess.h"
+#include "colors.h"
 #include "curtain_with_a_smile.h"
 #include "double_spinner.h"
 #include "flashing_yellow_clockwork.h"
+#include "game.h"
+#include "heart.h"
 #include "hofrat_keller.h"
 #include "inversion_of_ctrl.h"
 #include "jumping_blossom.h"
@@ -19,11 +23,12 @@
 #include "rot_drehend.h"
 #include "S.h"
 #include "secret_message.h"
+#include "spirale.h"
 #include "walking_tripples.h"
 #include "wild_at_heart.h"
 #include "wurm.h"
 
-static program_data_t programs[20];
+static program_data_t programs[25];
 
 // const PROGMEM char welcome_text[] = "HALLO HOWY \xA9 \x00";
 
@@ -46,7 +51,12 @@ void init_programs() {
 	programs[15] = (program_data_t) { &paletteSequencePlayer, (void*)&blinky_pinky_inky_program };
 	programs[16] = (program_data_t) { &paletteSequencePlayer, (void*)&double_spinner_program };
 	programs[17] = (program_data_t) { &paletteSequencePlayer, (void*)&flashing_yellow_clockwork_program };
-	programs[18] = (program_data_t) { &paletteSequencePlayer, (void*)&black_and_white_program };
-	programs[19] = (program_data_t) { &textPlayer, NULL };
+	programs[18] = (program_data_t) { &paletteSequencePlayer, (void*)&chess_palette };
+	programs[19] = (program_data_t) { &paletteSequencePlayer, (void*)&colors_palette };
+	programs[20] = (program_data_t) { &paletteSequencePlayer, (void*)&game_palette };
+	programs[21] = (program_data_t) { &paletteSequencePlayer, (void*)&heart_palette };
+	programs[22] = (program_data_t) { &paletteSequencePlayer, (void*)&spirale_palette };
+	programs[23] = (program_data_t) { &paletteSequencePlayer, (void*)&black_and_white_program };
+	programs[24] = (program_data_t) { &textPlayer, NULL };
 }
 
