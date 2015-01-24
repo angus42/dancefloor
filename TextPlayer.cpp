@@ -25,14 +25,14 @@ void TextPlayer::beat() {
 		}
 	}
 
-#ifdef _DEBUG
-	char c = read(index);
-	Serial.println();
-	Serial.print(c);
-	Serial.print("-");
-	Serial.print(offset);
-	Serial.println();
-#endif
+//#ifdef _DEBUG
+//	char c = read(index);
+//	Serial.println();
+//	Serial.print(c);
+//	Serial.print("-");
+//	Serial.print(offset);
+//	Serial.println();
+//#endif
 }
 
 byte* TextPlayer::getFrame(float beat_percentage) {
