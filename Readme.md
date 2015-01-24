@@ -121,25 +121,48 @@ palette array that stores the used colors.
 The player can also interpolate between two frames (Crossfade).
 A sequence program must opt in for this.
 
+### TextPlayer
+A player that can render any text. Text may be send via serial interface and persisted
+in the internal eeprom. That text can be as long as 144 characters.
+
+The Text player supports an ASCII subset with the characters from 0x20 (space) to 0x5F
+(underscore). So only capital letters are supported. A text must be set all upper
+case. Unsupported characters are rendered as a square.
+
+The following characters from the ISO 8859-1/Windows-1252 codepage are also supported:
+
+
+Code  | Char
+----- | -----
+0xC4  | Ä
+0xD6  | Ö
+0xDC  | Ü
+0xA9  | (c)
+
+Note that the copyright renders as a smiley :-)
+
+The command for sending a new text starts with a *t* and must end with a *~*.
+This looks as follows:
+
+```
+// tYOUR TEXT GOES HERE~
+```
+
+
 ### programs.h
 
-```
-// TODO
-```
+This file contains the array of all programs. A program entry consists of the
+player and optinal configuration data.
 
-## Palette sequences
+# Sequences generation
 There is a side project for designing the sequences that can be found [here][Sequencer].
 It stores the sequences as a JSON file.
 The _SequencePalletizer_ tool parses these files and generates a header file with
 a palette and sequence C array from it. A PowerShell script does this for all
 sequences in the _Sequences_ folder. The header files must then only be incorporated
 in the _progams.h_.
-
-# Backlog
-
-## TextPlayer
-A player that can render any text. Text may be send via serial interface and persisted
-in the internal eeprom.
+A slightly different version of that tool, the _AlphabetCompiler_ is used to generate
+the character bitmaps for the _TextPlayer_.
 
 # License
 
