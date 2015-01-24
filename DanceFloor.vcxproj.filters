@@ -117,6 +117,12 @@
     <ClInclude Include="blinky_pinky_inky.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="double_spinner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="flashing_yellow_clockwork.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_WS2801.cpp">

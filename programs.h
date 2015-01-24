@@ -8,6 +8,8 @@
 #include "black_and_white.h"
 #include "blinky_pinky_inky.h"
 #include "curtain_with_a_smile.h"
+#include "double_spinner.h"
+#include "flashing_yellow_clockwork.h"
 #include "hofrat_keller.h"
 #include "inversion_of_ctrl.h"
 #include "jumping_blossom.h"
@@ -21,7 +23,7 @@
 #include "wild_at_heart.h"
 #include "wurm.h"
 
-static program_data_t programs[18];
+static program_data_t programs[20];
 
 // const PROGMEM char welcome_text[] = "HALLO HOWY \xA9 \x00";
 
@@ -42,7 +44,9 @@ void init_programs() {
 	programs[13] = (program_data_t) { &paletteSequencePlayer, (void*)&maiwald_program };
 	programs[14] = (program_data_t) { &paletteSequencePlayer, (void*)&wurm_program };
 	programs[15] = (program_data_t) { &paletteSequencePlayer, (void*)&blinky_pinky_inky_program };
-	programs[16] = (program_data_t) { &paletteSequencePlayer, (void*)&black_and_white_program };
-	programs[17] = (program_data_t) { &textPlayer, NULL };
+	programs[16] = (program_data_t) { &paletteSequencePlayer, (void*)&double_spinner_program };
+	programs[17] = (program_data_t) { &paletteSequencePlayer, (void*)&flashing_yellow_clockwork_program };
+	programs[18] = (program_data_t) { &paletteSequencePlayer, (void*)&black_and_white_program };
+	programs[19] = (program_data_t) { &textPlayer, NULL };
 }
 

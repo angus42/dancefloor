@@ -92,6 +92,8 @@
     <ClInclude Include="curtain_with_a_smile.h">
       <FileType>CppCode</FileType>
     </ClInclude>
+    <ClInclude Include="double_spinner.h" />
+    <ClInclude Include="flashing_yellow_clockwork.h" />
     <ClInclude Include="FrameRenderer.h" />
     <ClInclude Include="fscale.h" />
     <ClInclude Include="Gaussian.h" />
