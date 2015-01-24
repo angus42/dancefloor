@@ -75,6 +75,14 @@ the next time the dance floor is turned on.
 
 # Implementation
 
+The whole purpose of the dance floor is to let lights shine in different colors
+at different times. The part of the program that determines such a light pattern
+is called the player. A player can have a configuration. The tuple of player and
+configuration is called a program.
+The _Controller_ class is the central point of the program. It switches between
+programs, gives the currently active player an additional external stimulus (rhythm)
+and asks them to create a frame (one pattern of the light matrix).
+
 ## Code tour
 
 ### Config.h
@@ -100,9 +108,16 @@ This is the main Ardu[ino] file. It contains of
 
 ### Controller
 
-```
-// TODO
-```
+This is the central class. It receives the bpm rate or sound trigger, as well as
+the program and mode change requests from the _DanceFloor.ino_ and acts accordingly.
+
+The _loop_ generates a rhythm beat from according to the current bpm rate when in
+bpm mode. It then asks the current player to create the current frame and gives the
+result to the _FrameRenderer_ class. At the end it delays to adjust to the target
+frame rate.
+
+In random program mode it changes the program after a random time. The new program
+is also chosen randomly.
 
 ### FrameRenderer
 
@@ -111,9 +126,12 @@ This is a simple abstraction between the frame array of rgb values and the
 
 ### Player.h
 
-```
-// TODO
-```
+The _Controller_ calls the player. It does
+
++ _configure_ the current program.
++ call _beat_ the give a stimulus that the program can use, e.g.
+  jump to the next frame in a sequence.
++ call _getFrame_ in each loop to get the current frame.
 
 ### PaletteSequencePlayer
 This player can play sequences that are stored as frames of indexes into a
@@ -148,11 +166,13 @@ This looks as follows:
 // tYOUR TEXT GOES HERE~
 ```
 
+The accepted text is echoed on the serial port to give feedback.
+
 
 ### programs.h
 
 This file contains the array of all programs. A program entry consists of the
-player and optinal configuration data.
+player and optional configuration data.
 
 # Sequences generation
 There is a side project for designing the sequences that can be found [here][Sequencer].
